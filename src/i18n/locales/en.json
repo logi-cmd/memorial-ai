@@ -1,0 +1,225 @@
+{
+  "common": {
+    "appName": "Memorial AI",
+    "appDescription": "Create digital avatars of your loved ones, whether memorializing or staying connected, love transcends time and distance",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Retry",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "delete": "Delete",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "skip": "Skip"
+  },
+  "home": {
+    "title": "Keep Your Loved Ones Close",
+    "subtitle": "Create digital avatars of your family, companionship beyond time and distance",
+    "createAvatar": "Create Avatar",
+    "viewAvatars": "My Avatars",
+    "heroDescription": "Whether memorializing a loved one or staying connected with distant parents, growing children, or long-distance partners, digital avatars keep love and companionship alive",
+    "keywordsLabel": "Describe with {name} keywords (at least 3)",
+    "photoDesc": "Upload 1-3 photos to help AI generate an avatar",
+    "audioDesc": "Upload at least 1 minute of clear voice recording, AI will clone their voice",
+    "steps": {
+      "1": "Keywords",
+      "2": "Upload Photo",
+      "3": "Voice Clone"
+    },
+    "features": {
+      "voice": "Voice Cloning",
+      "voiceDesc": "Upload voice recordings, AI replicates their way of speaking",
+      "memory": "Smart Memory",
+      "memoryDesc": "The more you chat, the more it learns, memories never fade",
+      "style": "Style Learning",
+      "styleDesc": "Import chat history, AI learns their expression habits",
+      "emotion": "Emotion Awareness",
+      "emotionDesc": "Recognizes emotions, responds like a real person"
+    }
+  },
+  "create": {
+    "steps": {
+      "1": "Basic Info",
+      "5": "Deep Dive",
+      "2": "Photo",
+      "3": "Voice (Optional)",
+      "4": "Chat History (Optional)"
+    },
+    "namePlaceholder": "e.g., Mom",
+    "relationshipLabel": "Relationship",
+    "keywordsLabel": "Describe with {name} keywords (at least 3)",
+    "keywordPlaceholder": "e.g., gentle, loves to laugh",
+    "addKeyword": "Add",
+    "descriptionLabel": "More details (optional)",
+    "descriptionPlaceholder": "More stories and memories about them...",
+    "photoTitle": "Upload {name}'s photo",
+    "photoDesc": "Upload 1-3 photos to help AI generate an avatar",
+    "clickUpload": "Click to upload photo",
+    "audioTitle": "Upload {name}'s voice",
+    "audioDesc": "Upload at least 1 minute of clear voice recording. AI will clone their voice. You can skip this step if no recording is available.",
+    "clickUploadAudio": "Click to upload audio file",
+    "calibrateTitle": "Upload Chat History (Optional)",
+    "calibrateDesc": "Paste real chat history with {name}, AI will learn their speaking style.",
+    "calibrateHighlight": "This is the most critical step for making the memorial authentic.",
+    "calibratePlaceholder": "Paste chat history, e.g.:\nYou: What did you cook today, Mom?\nMom: I made your favorite dumplings!",
+    "charCount": "{count} characters",
+    "analyzing": "AI is analyzing speaking style...",
+    "calibrateAndChat": "Analyze & Start Chatting",
+    "skipAndChat": "Skip, Start Chatting",
+    "creating": "Creating...",
+    "requiredFields": "Please fill in the name, select a relationship, and add at least 3 keywords",
+    "relationships": {
+      "father": "Father",
+      "mother": "Mother",
+      "grandfather": "Grandfather",
+      "grandmother": "Grandmother",
+      "maternalGrandfather": "Grandfather (maternal)",
+      "maternalGrandmother": "Grandmother (maternal)",
+      "spouse": "Spouse",
+      "sibling": "Sibling",
+      "child": "Child",
+      "friend": "Friend",
+      "other": "Other",
+      "deceased": "Deceased",
+      "family": "Family"
+    },
+    "relationshipSubtypes": {
+      "parent": "Parent",
+      "child": "Child",
+      "partner": "Partner"
+    },
+    "presets": {
+      "livingParent": "Living Parent",
+      "livingParentDesc": "For parents who live far away, create a digital presence so you can always talk to them",
+      "growingChild": "Growing Child",
+      "growingChildDesc": "Capture your child's personality at different life stages, create a time capsule of their growth",
+      "longDistancePartner": "Long-distance Partner",
+      "longDistancePartnerDesc": "For couples in long-distance relationships, create an AI companion that understands your partner's personality"
+    },
+    "nameLabel": "Their Name",
+    "analyzingShort": "Analyzing..."
+  },
+  "chat": {
+    "startConversation": "Start a conversation with {name}",
+    "chatMore": "The more you chat, the more it understands about your loved one",
+    "messagePlaceholder": "Say something to {name}...",
+    "turns": "{count} turns",
+    "newConversation": "Just getting to know each other",
+    "voiceInput": "Voice Input",
+    "voiceOutput": "Read Aloud",
+    "memoryManagement": "Memory Management",
+    "pendingMemories": "{count} new memories pending confirmation",
+    "view": "View",
+    "addMemoryPlaceholder": "Add a memory about them...",
+    "addMemory": "Add",
+    "manualMemory": "Add Memory Manually",
+    "pendingLabel": "Pending",
+    "errorRetry": "Sorry, something went wrong. Please try again later.",
+    "browserNotSupported": "Your browser does not support speech recognition",
+    "defaultAvatarName": "Memorial"
+  },
+  "auth": {
+    "loginTitle": "Sign In",
+    "loginSubtitle": "Welcome back",
+    "registerTitle": "Create Account",
+    "registerSubtitle": "Start creating digital memorials",
+    "email": "Email",
+    "emailPlaceholder": "your@email.com",
+    "password": "Password",
+    "passwordPlaceholder": "At least 6 characters",
+    "name": "Name",
+    "namePlaceholder": "Your name",
+    "loginButton": "Sign In",
+    "registerButton": "Create Account",
+    "noAccount": "Don't have an account?",
+    "registerLink": "Sign up now",
+    "hasAccount": "Already have an account?",
+    "loginLink": "Sign in",
+    "logout": "Sign Out",
+    "dashboard": "My Memorials"
+  },
+  "dashboard": {
+    "title": "My Memorials",
+    "createNew": "Create Memorial",
+    "emptyTitle": "No memorials yet",
+    "emptyDesc": "Create a digital memorial and start a conversation",
+    "createFirst": "Create Your First Memorial",
+    "chat": "Chat",
+    "memories": "Memories",
+    "lastChat": "Last chat",
+    "justNow": "just now",
+    "minutesAgo": "{count}m ago",
+    "hoursAgo": "{count}h ago",
+    "daysAgo": "{count}d ago",
+    "deleteTitle": "Confirm Delete",
+    "deleteMessage": "This cannot be undone. All conversations and memories will be lost.",
+    "relationships": {
+      "father": "Father", "mother": "Mother", "grandfather": "Grandfather", "grandmother": "Grandmother",
+      "maternalGrandfather": "Grandfather (maternal)", "maternalGrandmother": "Grandmother (maternal)",
+      "spouse": "Spouse", "sibling": "Sibling", "child": "Child", "friend": "Friend", "other": "Other"
+    }
+  },
+  "upload": {
+    "clickOrDrag": "Click or drag to upload",
+    "clickUploadAudio": "Click to upload audio file",
+    "uploading": "Uploading...",
+    "success": "Upload successful",
+    "error": "Upload failed"
+  },
+  "timeline": {
+    "title": "Memory Timeline",
+    "filterAll": "All",
+    "loading": "Loading...",
+    "empty": "No memories yet",
+    "monthFormat": "{month}/{year}",
+    "types": {
+      "core_identity": "Core Identity",
+      "personality": "Personality",
+      "life_event": "Life Event",
+      "relationship": "Relationship",
+      "habit": "Habit",
+      "conversation": "Conversation",
+      "auto_extract": "Auto Extract",
+      "manual": "Manual"
+    },
+    "sources": {
+      "conversation": "Chat",
+      "auto_extract": "AI Extract",
+      "manual": "Manual"
+    },
+    "filterPending": "Pending",
+    "pending": "Pending",
+    "confirmed": "Confirmed",
+    "pendingTooltip": "This memory is not yet confirmed",
+    "confirmTooltip": "Confirm this memory",
+    "deleteTooltip": "Delete this memory"
+  },
+  "questionnaire": {
+    "submit": "Done, Continue"
+  },
+  "share": {
+    "shareAvatar": "Share",
+    "copyLink": "复制链接",
+    "linkCopied": "已复制!",
+    "shareToWechat": "分享到微信",
+    "pageTitle": "数字分身",
+    "pageSubtitle": "承载着珍贵的记忆",
+    "createYours": "创建你的数字分身",
+    "notFound": "未找到该数字分身",
+    "backToHome": "返回首页"
+  },
+  "pricing": {
+    "title": "Choose Your Plan",
+    "subtitle": "Every warm connection deserves to be cherished. Pick the plan that fits you best.",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "yearlySave": "Save {percent}%",
+    "currentPlan": "Current Plan",
+    "backHome": "Back to Home"
+  }
+}
+  }
+}
+}

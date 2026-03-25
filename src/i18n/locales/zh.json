@@ -1,0 +1,249 @@
+{
+  "common": {
+    "appName": "永恒记忆",
+    "appDescription": "创建家人的数字分身，无论是纪念逝者还是陪伴在世亲人，让爱跨越时空",
+    "loading": "加载中...",
+    "error": "发生错误",
+    "retry": "重试",
+    "save": "保存",
+    "cancel": "取消",
+    "confirm": "确认",
+    "delete": "删除",
+    "close": "关闭",
+    "back": "上一步",
+    "next": "下一步",
+    "skip": "跳过"
+  },
+  "home": {
+    "title": "让爱以另一种方式延续",
+    "subtitle": "创建家人的数字分身，跨越时空的陪伴",
+    "createAvatar": "创建分身",
+    "viewAvatars": "我的分身",
+    "heroDescription": "无论是纪念逝去的亲人，还是与远方父母、成长中的孩子、异地伴侣保持连接，数字分身都能让爱与陪伴永不停歇",
+    "keywordsLabel": "用 {name} 个关键词描述（至少 3 个）",
+    "photoDesc": "上传 1-3 张照片，帮助 AI 生成头像",
+    "audioDesc": "上传至少 1 分钟的清晰语音录音，AI 会克隆 TA 的声音",
+    "steps": {
+      "1": "描述关键词",
+      "2": "上传照片",
+      "3": "语音克隆"
+    },
+    "features": {
+      "voice": "真实声音克隆",
+      "voiceDesc": "上传语音，AI 还原 TA 的说话方式",
+      "memory": "智能记忆系统",
+      "memoryDesc": "越聊越懂，记忆永远不褪色",
+      "style": "风格学习",
+      "styleDesc": "导入聊天记录，学会 TA 的表达习惯",
+      "emotion": "情感感知",
+      "emotionDesc": "识别情绪，像真人一样回应"
+    }
+  },
+  "create": {
+    "steps": {
+      "1": "基础信息",
+      "5": "深度了解",
+      "2": "照片",
+      "3": "语音（可选）",
+      "4": "聊天记录（可选）"
+    },
+    "namePlaceholder": "例如：妈妈",
+    "relationshipLabel": "和你的关系",
+    "keywordsLabel": "用 {name} 个关键词描述（至少 3 个）",
+    "keywordPlaceholder": "例如：温柔、爱笑",
+    "addKeyword": "添加",
+    "descriptionLabel": "更多描述（可选）",
+    "descriptionPlaceholder": "关于 TA 的更多故事和回忆...",
+    "photoTitle": "上传 {name} 的照片",
+    "photoDesc": "上传 1-3 张照片，帮助 AI 生成头像",
+    "clickUpload": "点击上传照片",
+    "audioTitle": "上传 {name} 的语音",
+    "audioDesc": "上传至少 1 分钟的清晰语音录音，AI 会克隆 TA 的声音。如果没有录音，可以跳过这一步。",
+    "clickUploadAudio": "点击上传音频文件",
+    "calibrateTitle": "上传聊天记录（可选）",
+    "calibrateDesc": "粘贴与{name}的真实微信聊天记录，AI 会学习 TA 的说话风格。",
+    "calibrateHighlight": "这是让分身「像本人」的最关键一步。",
+    "calibratePlaceholder": "粘贴聊天记录，例如：\n你：妈妈今天做了什么好吃的？\n妈妈：给你包了你最爱吃的饺子呀...",
+    "charCount": "{count} 字符",
+    "analyzing": "AI 正在分析说话风格...",
+    "calibrateAndChat": "分析风格并开始对话",
+    "skipAndChat": "跳过，直接对话",
+    "creating": "创建中...",
+    "requiredFields": "请填写姓名、选择关系并添加至少 3 个关键词",
+    "relationships": {
+      "father": "父亲",
+      "mother": "母亲",
+      "grandfather": "爷爷",
+      "grandmother": "奶奶",
+      "maternalGrandfather": "外公",
+      "maternalGrandmother": "外婆",
+      "spouse": "配偶",
+      "sibling": "兄弟姐妹",
+      "child": "子女",
+      "friend": "朋友",
+      "other": "其他"
+    },
+    "relationshipTypes": {
+      "deceased": "逝者",
+      "family": "家人"
+    },
+    "relationshipSubtypes": {
+      "parent": "父母",
+      "child": "孩子",
+      "partner": "伴侣"
+    },
+    "presets": {
+      "livingParent": "远方的父母",
+      "livingParentDesc": "为远在他乡的父母创建数字分身，让你随时都能「和TA说话」",
+      "growingChild": "成长中的孩子",
+      "growingChildDesc": "记录孩子不同成长阶段的个性，创建一个成长时光胶囊",
+      "longDistancePartner": "异地伴侣",
+      "longDistancePartnerDesc": "为异地恋的TA创建AI伴侣，了解你伴侣的个性和习惯"
+    },
+    "nameLabel": "TA 的名字",
+    "analyzingShort": "分析中..."
+  },
+  "chat": {
+    "startConversation": "和 {name} 开始对话吧",
+    "chatMore": "聊得越多，TA 会越了解你的亲人",
+    "messagePlaceholder": "对 {name} 说些什么...",
+    "turns": "已对话 {count} 轮",
+    "newConversation": "刚开始认识",
+    "voiceInput": "语音输入",
+    "voiceOutput": "朗读",
+    "memoryManagement": "记忆管理",
+    "pendingMemories": "发现 {count} 条新记忆待确认",
+    "view": "查看",
+    "addMemoryPlaceholder": "输入关于 TA 的记忆...",
+    "addMemory": "添加",
+    "manualMemory": "手动添加记忆",
+    "pendingLabel": "待确认",
+    "errorRetry": "抱歉，发生了一些问题，请稍后再试。",
+    "browserNotSupported": "您的浏览器不支持语音识别",
+    "defaultAvatarName": "分身"
+  },
+  "auth": {
+    "loginTitle": "登录",
+    "loginSubtitle": "欢迎回来",
+    "registerTitle": "创建账户",
+    "registerSubtitle": "开始创建数字分身",
+    "email": "邮箱",
+    "emailPlaceholder": "your@email.com",
+    "password": "密码",
+    "passwordPlaceholder": "至少 6 位",
+    "name": "姓名",
+    "namePlaceholder": "你的名字",
+    "loginButton": "登录",
+    "registerButton": "注册",
+    "noAccount": "还没有账户？",
+    "registerLink": "立即注册",
+    "hasAccount": "已有账户？",
+    "loginLink": "去登录",
+    "logout": "退出登录",
+    "dashboard": "我的分身"
+  },
+  "dashboard": {
+    "title": "我的分身",
+    "createNew": "创建分身",
+    "emptyTitle": "还没有创建分身",
+    "emptyDesc": "创建一个数字分身，开始与 TA 对话吧",
+    "createFirst": "创建第一个分身",
+    "chat": "对话",
+    "memories": "记忆",
+    "lastChat": "上次对话",
+    "justNow": "刚刚",
+    "minutesAgo": "{count} 分钟前",
+    "hoursAgo": "{count} 小时前",
+    "daysAgo": "{count} 天前",
+    "deleteTitle": "确认删除",
+    "deleteMessage": "删除后无法恢复，所有对话和记忆都将丢失。",
+    "relationships": {
+      "father": "父亲", "mother": "母亲", "grandfather": "爷爷", "grandmother": "奶奶",
+      "maternalGrandfather": "外公", "maternalGrandmother": "外婆", "spouse": "配偶",
+      "sibling": "兄弟姐妹", "child": "子女", "friend": "朋友", "other": "其他"
+    }
+  },
+  "upload": {
+    "clickOrDrag": "点击或拖拽上传",
+    "clickUploadAudio": "点击上传音频文件",
+    "uploading": "上传中...",
+    "success": "上传成功",
+    "error": "上传失败"
+  },
+  "timeline": {
+    "title": "记忆时间线",
+    "filterAll": "全部",
+    "loading": "加载中...",
+    "empty": "暂无记忆",
+    "monthFormat": "{year}年{month}月",
+    "types": {
+      "core_identity": "核心身份",
+      "personality": "性格特质",
+      "life_event": "人生事件",
+      "relationship": "关系",
+      "habit": "习惯",
+      "conversation": "对话",
+      "auto_extract": "自动提取",
+      "manual": "手动添加"
+    },
+    "sources": {
+      "conversation": "对话",
+      "auto_extract": "AI提取",
+      "manual": "手动"
+    },
+    "filterPending": "待确认",
+    "pending": "待确认",
+    "confirmed": "已确认",
+    "pendingTooltip": "这条记忆尚未确认",
+    "confirmTooltip": "确认这条记忆",
+    "deleteTooltip": "删除这条记忆"
+  },
+  "questionnaire": {
+    "title": "深度了解 TA",
+    "subtitle": "回答越多，分身越像 TA",
+    "categories": {
+      "personality": "性格特质",
+      "life_events": "人生经历",
+      "relationships": "人际关系",
+      "habits": "日常习惯",
+      "values": "价值观"
+    },
+    "questions": {
+      "p1": "TA 最大的性格特点是什么？",
+      "p2": "TA 有什么口头禅或常用的语气词？",
+      "l1": "TA 人生中最重要的一段经历是什么？",
+      "l2": "TA 最自豪的事情是什么？",
+      "r1": "TA 和你之间最珍贵的一段回忆是什么？",
+      "r2": "TA 和其他人相处时有什么特点？",
+      "h1": "TA 日常有什么特别的习惯或爱好？",
+      "h2": "TA 最喜欢吃什么？",
+      "v1": "TA 最看重什么？",
+      "v2": "如果 TA 遇到困难，通常会怎么做？"
+    },
+    "placeholders": {
+      "p1": "例如：总是为别人着想，嘴硬心软",
+      "p2": "例如：哎呀、好嘛、随便啦",
+      "l1": "例如：年轻时独自去大城市打拼",
+      "l2": "例如：把三个孩子都培养成大学生",
+      "r1": "例如：小时候每天放学一起走路回家",
+      "r2": "例如：对陌生人有礼貌但保持距离",
+      "h1": "例如：每天早上六点去公园遛弯",
+      "h2": "例如：红烧肉，一定要放冰糖",
+      "v1": "例如：家庭和睦、诚实做人",
+      "v2": "例如：自己默默扛着，不告诉家里人"
+    },
+    "skip": "跳过",
+    "submit": "完成并继续"
+  },
+  "share": {
+    "shareAvatar": "分享",
+    "copyLink": "复制链接",
+    "linkCopied": "已复制!",
+    "shareToWechat": "分享到微信",
+    "pageTitle": "数字分身",
+    "pageSubtitle": "承载着珍贵的记忆",
+    "createYours": "创建你的数字分身",
+    "notFound": "未找到该数字分身",
+    "backToHome": "返回首页"
+  }
+}
