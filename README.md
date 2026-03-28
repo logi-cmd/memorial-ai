@@ -2,15 +2,16 @@
 
 # Memorial AI
 
-**AI-powered digital memorials — preserve and interact with memories of loved ones.**
+**AI-powered digital avatars — preserve memories of loved ones, completely offline.**
 
-Create a digital presence of your loved ones using voice cloning, smart memory, and personality modeling. Have warm conversations that help keep their memory alive.
+Create a digital presence of your loved ones using local AI. Voice cloning, smart memory, and personality modeling — all running on your own machine, no cloud required.
 
 [![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-blue.svg)](LICENSE)
 [![Next.js](https://img.shields.io/badge/Next.js-16-black)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://www.typescriptlang.org/)
-[![Supabase](https://img.shields.io/badge/Supabase-PostgreSQL-green)](https://supabase.com/)
-[![Anthropic](https://img.shields.io/badge/Anthropic-Claude-orange)](https://www.anthropic.com/)
+[![Ollama](https://img.shields.io/badge/Ollama-local-black)](https://ollama.com/)
+[![SQLite](https://img.shields.io/badge/SQLite-local-lightgrey)](https://www.sqlite.org/)
+[![99 Tests](https://img.shields.io/badge/Tests-99%20passing-green)](https://github.com/logi-cmd/memorial-ai/actions)
 
 </div>
 
@@ -28,8 +29,8 @@ Upload a few audio clips, share some memories, and Memorial AI creates a digital
 
 It's not about replacing anyone. It's about keeping their memory close.
 
-> [!NOTE]
-> Memorial AI is an open-source project. You can self-host it with your own API keys, or use it as a foundation to build your own digital memorial experience.
+> [!IMPORTANT]
+> **100% Local-First.** Memorial AI runs entirely on your machine by default. No cloud services, no API keys, no data leaves your device. You own everything.
 
 ---
 
@@ -38,8 +39,8 @@ It's not about replacing anyone. It's about keeping their memory close.
 ### Homepage
 ![Homepage with hero section, feature cards, and step-by-step guide](docs/images/dashboard.png "Memorial AI Homepage")
 
-### Login & Register
-![Clean login and registration pages](docs/images/login.png "Login page")
+### Settings
+![Settings page for configuring LLM, embedding, and TTS providers](docs/images/settings.png "Settings page")
 
 ### Share Avatar
 ![Public share page to showcase a digital avatar](docs/images/share.png "Share avatar card")
@@ -50,123 +51,119 @@ It's not about replacing anyone. It's about keeping their memory close.
 
 ### Core
 
-- **Character Card** — Structured personality profile (core identity, speech patterns, emotional patterns, relationship dynamics) generated from just a name and a few keywords
-- **Smart Memory** — Semantic memory extraction from conversations using OpenAI embeddings + pgvector. Automatically discovers and organizes important memories
-- **Voice Cloning** — ElevenLabs TTS integration clones your loved one's voice from audio recordings
-- **Emotion Awareness** — Real-time conversation emotion analysis that adjusts voice warmth and suggested tone
+- **Character Card** — Structured personality profile generated from just a name and a few keywords
+- **Smart Memory** — Semantic memory extraction with local embeddings. Automatically discovers and organizes important memories
+- **Voice Cloning** — Clone your loved one's voice from audio recordings
+- **Emotion Awareness** — Real-time conversation emotion analysis
 
 ### Advanced
 
-- **Style Learning** — Paste real chat history and the AI learns their unique expression habits, catchphrases, and sentence patterns
-- **Conversation Summaries** — Auto-generated every 10 turns, injected as context so long conversations stay coherent
-- **Personality Evolution** — The character card evolves over time as new memories and stories are discovered through conversation
-- **Proactive Messages** — The avatar can initiate topics — birthday memories, emotional check-ins, and recalling important moments
+- **Style Learning** — Paste real chat history and the AI learns their unique expression habits
+- **Conversation Summaries** — Auto-generated for context compression
+- **Personality Evolution** — The character card evolves over time as new stories emerge
+- **Proactive Messages** — The avatar can initiate topics — birthday memories, emotional check-ins
+- **Avatar Sharing** — Share public avatar cards with family and friends
 
-### Technical
+### Local-First Architecture
 
-- **Streaming Responses** — Server-Sent Events for real-time text streaming
-- **i18n** — Chinese and English support via next-intl
-- **Docker Support** — Multi-stage Dockerfile and docker-compose for easy self-hosting
-- **Row Level Security** — Supabase RLS ensures users can only access their own data
+- **No Auth Required** — Start using immediately, no login needed
+- **Ollama LLM** — Run any model locally (Qwen2.5, Llama3, Mistral, etc.)
+- **Local Embeddings** — @xenova/transformers, zero external dependencies
+- **Edge-TTS** — Free Microsoft neural voices, no API key
+- **SQLite Storage** — All data on your machine, portable database file
+- **Optional Cloud Mode** — Switch to API keys anytime for higher quality
 
 ---
 
 ## Architecture
 
 ```
-Frontend:  Next.js 16 + Tailwind CSS 4
-LLM:       Claude Sonnet 4 (conversation) + Claude Haiku 4 (emotion / memory / summary)
-TTS:       ElevenLabs voice cloning API
-Embedding: OpenAI text-embedding-3-small
-Database:  Supabase (PostgreSQL + pgvector)
-Auth:      Supabase Auth (SSR with @supabase/ssr)
+Local Mode (default):
+  Frontend:  Next.js 16 + Tailwind CSS 4
+  LLM:       Ollama (qwen2.5, llama3, mistral, etc.)
+  TTS:       Edge-TTS (Microsoft neural voices)
+  Embedding: @xenova/transformers (all-MiniLM-L6-v2)
+  Database:  SQLite (better-sqlite3)
+  Auth:      None (local-first)
+
+Cloud Mode (optional):
+  LLM:       Anthropic Claude
+  TTS:       ElevenLabs
+  Embedding: OpenAI text-embedding-3-small
+  Database:  Supabase PostgreSQL
+  Auth:      Supabase Auth
 ```
 
 ### Key Components
 
 | Component | Description |
 |-----------|-------------|
-| `src/lib/claude.ts` | LLM interface — character card generation, conversation streaming, emotion analysis, memory extraction, conversation summaries |
-| `src/lib/voice.ts` | ElevenLabs TTS with voice cloning |
-| `src/lib/evolution.ts` | Personality evolution engine — incremental character card patches |
-| `src/lib/proactive.ts` | Proactive message generation (birthday, anniversary, emotional check-in) |
-| `src/lib/supabase.ts` | Database client, types, and queries |
-| `src/app/api/chat/route.ts` | SSE streaming chat API with emotion + memory + evolution pipeline |
-| `src/app/api/create/route.ts` | Avatar creation with character card generation |
-| `supabase/migrations/` | SQL schema, pgvector index, weighted memory matching functions |
+| `src/lib/db.ts` | SQLite database layer — all CRUD operations |
+| `src/lib/providers/ollama.ts` | Ollama LLM provider with streaming |
+| `src/lib/providers/local-embedding.ts` | Local vector embeddings |
+| `src/lib/providers/edge-tts.ts` | Edge-TTS text-to-speech |
+| `src/lib/providers/config.ts` | Provider mode configuration |
+| `src/lib/claude.ts` | Cloud LLM fallback (Anthropic) |
+| `src/app/api/chat/route.ts` | SSE streaming chat API |
+| `src/app/settings/page.tsx` | Settings UI for mode switching |
 
 ---
 
 ## Quick Start
 
-### Prerequisites
+### Option A: Local Mode (Recommended)
 
+**Prerequisites:**
 - Node.js 18+
-- Supabase project (or any PostgreSQL with pgvector)
-- Anthropic API key (Claude)
-- OpenAI API key (embeddings)
-- ElevenLabs API key (voice cloning, optional)
+- [Ollama](https://ollama.com/) installed and running
 
-### 1. Clone and install
+**Steps:**
 
 ```bash
+# 1. Clone and install
 git clone https://github.com/logi-cmd/memorial-ai.git
 cd memorial-ai
 npm install
-```
 
-### 2. Set up database
+# 2. Start Ollama and pull a model
+ollama pull qwen2.5:7b
 
-Run the Supabase migrations in order:
-
-```
-supabase/migrations/001_initial_schema.sql
-supabase/migrations/002_embedding_index.sql
-supabase/migrations/003_memory_fixes.sql
-supabase/migrations/004_character_card.sql
-supabase/migrations/005_*.sql
-supabase/migrations/006_*.sql
-supabase/migrations/007_*.sql
-supabase/migrations/008_*.sql
-```
-
-### 3. Configure environment
-
-```bash
-cp .env.example .env
-```
-
-Fill in your API keys:
-
-```env
-# Supabase
-NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
-
-# Anthropic Claude API
-ANTHROPIC_API_KEY=sk-ant-...
-
-# OpenAI (Embedding)
-OPENAI_API_KEY=sk-...
-
-# ElevenLabs (Voice, optional)
-ELEVENLABS_API_KEY=...
-
-# App
-NEXT_PUBLIC_APP_URL=http://localhost:3000
-```
-
-### 4. Run
-
-```bash
+# 3. Run the app
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:3000](http://localhost:3000). No API keys needed!
 
----
+**Default local config:**
+- LLM: `qwen2.5:7b` via `http://localhost:11434`
+- Embedding: Local `all-MiniLM-L6-v2`
+- TTS: Edge-TTS (free)
+- Database: `~/.memorial-ai/memorial-ai.db`
 
-## Docker
+### Option B: Cloud Mode
+
+```bash
+# 1. Clone and install
+git clone https://github.com/logi-cmd/memorial-ai.git
+cd memorial-ai
+npm install
+
+# 2. Configure environment
+cp .env.example .env
+
+# 3. Set mode to cloud
+APP_MODE=cloud
+
+# 4. Fill in API keys
+ANTHROPIC_API_KEY=sk-ant-...
+OPENAI_API_KEY=sk-...
+ELEVENLABS_API_KEY=...
+
+# 5. Run
+npm run dev
+```
+
+### Docker
 
 ```bash
 # Build
@@ -176,36 +173,43 @@ docker build -t memorial-ai .
 docker run -p 3000:3000 --env-file .env memorial-ai
 ```
 
-Or use docker-compose:
-
-```bash
-docker compose up -d
-```
-
 ---
 
 ## Environment Variables
 
+### Local Mode (default, zero config)
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `APP_MODE` | `local` | Run mode: `local` or `cloud` |
+| `OLLAMA_BASE_URL` | `http://localhost:11434` | Ollama API URL |
+| `OLLAMA_MODEL` | `qwen2.5:7b` | Ollama model name |
+
+### Cloud Mode
+
 | Variable | Required | Description |
 |----------|----------|-------------|
-| `NEXT_PUBLIC_SUPABASE_URL` | Yes | Supabase project URL |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Yes | Supabase anon key |
-| `ANTHROPIC_API_KEY` | Yes | Anthropic Claude API key |
-| `OPENAI_API_KEY` | Yes | OpenAI API key (embeddings) |
-| `ELEVENLABS_API_KEY` | No | ElevenLabs API key (voice cloning) |
-| `NEXT_PUBLIC_APP_URL` | No | App URL (default: `http://localhost:3000`) |
+| `APP_MODE` | No | Set to `cloud` to enable |
+| `ANTHROPIC_API_KEY` | For LLM | Anthropic Claude API key |
+| `OPENAI_API_KEY` | For embeddings | OpenAI API key |
+| `ELEVENLABS_API_KEY` | For TTS | ElevenLabs API key |
+| `NEXT_PUBLIC_SUPABASE_URL` | For DB | Supabase project URL |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | For DB | Supabase anon key |
 
 ---
 
 ## Tech Stack
 
-- **[Next.js 16](https://nextjs.org/)** — App Router, Server Actions, Streaming
+- **[Next.js 16](https://nextjs.org/)** — App Router, Streaming, Server Components
 - **[Tailwind CSS 4](https://tailwindcss.com/)** — Utility-first styling
-- **[Supabase](https://supabase.com/)** — PostgreSQL + pgvector for vector similarity search
-- **[Anthropic Claude](https://www.anthropic.com/)** — Sonnet 4 for conversations, Haiku 4 for analysis tasks
-- **[ElevenLabs](https://elevenlabs.io/)** — Voice cloning and TTS
-- **[OpenAI](https://openai.com/)** — text-embedding-3-small for semantic memory matching
+- **[Ollama](https://ollama.com/)** — Local LLM inference
+- **[better-sqlite3](https://github.com/WiseLibs/better-sqlite3)** — Local database
+- **[@xenova/transformers](https://github.com/xenova/transformers)** — Local embeddings
+- **[node-edge-tts](https://github.com/nicholasgriffintn/node-edge-tts)** — Free TTS
+- **[Anthropic Claude](https://www.anthropic.com/)** — Cloud LLM fallback
+- **[OpenAI](https://openai.com/)** — Cloud embedding fallback
 - **[next-intl](https://next-intl.dev/)** — Internationalization (zh/en)
+- **[Vitest](https://vitest.dev/)** — Unit testing (99 tests)
 
 ---
 
@@ -220,11 +224,11 @@ docker compose up -d
 
 ### Having a Conversation
 
-1. The AI retrieves relevant memories from past conversations (weighted RAG)
+1. The AI retrieves relevant memories from past conversations (local vector search)
 2. The character card is injected as the system prompt for consistent personality
 3. As you talk, new memories are automatically extracted and stored
-4. Every 10 turns, a conversation summary is generated for context compression
-5. Real-time emotion analysis adjusts the voice output warmth
+4. Conversation summaries are generated for context compression
+5. Real-time emotion analysis adjusts the voice output
 
 ### Personality Evolution
 
