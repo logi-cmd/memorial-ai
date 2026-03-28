@@ -11,19 +11,33 @@ function generateId(): string {
 }
 
 let _db: Database.Database | null = null;
+let _dbPath: string = DB_PATH;
 
 export function getDb(): Database.Database {
   if (!_db) {
-    const dir = path.dirname(DB_PATH);
-    if (!fs.existsSync(dir)) {
+    const dir = path.dirname(_dbPath);
+    if (dir !== ':memory:' && !fs.existsSync(dir)) {
       fs.mkdirSync(dir, { recursive: true });
     }
-    _db = new Database(DB_PATH);
+    _db = new Database(_dbPath);
     _db.pragma('journal_mode = WAL');
     _db.pragma('foreign_keys = ON');
     initSchema(_db);
   }
   return _db;
+}
+
+export function __setTestDb(dbPath = ':memory:'): Database.Database {
+  if (_db) _db.close();
+  _dbPath = dbPath;
+  _db = new Database(dbPath);
+  _db.pragma('foreign_keys = ON');
+  initSchema(_db);
+  return _db;
+}
+
+export function __closeDb() {
+  if (_db) { _db.close(); _db = null; _dbPath = DB_PATH; }
 }
 
 function initSchema(db: Database.Database) {
