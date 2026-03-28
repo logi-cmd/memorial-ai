@@ -1,1225 +1,220 @@
+⚠ Port 3000 is in use by process 38928, using available port 3001 instead.
 ▲ Next.js 16.2.1 (Turbopack)
-- Local:         http://localhost:3000
-- Network:       http://169.254.83.107:3000
+- Local:         http://localhost:3001
+- Network:       http://169.254.83.107:3001
 - Environments: .env
-✓ Ready in 535ms
+✓ Ready in 684ms
 ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
 
 ○ Compiling / ...
-Error: MISSING_MESSAGE: Could not resolve `home.common:appName` in messages for locale `zh`.
-    at Home (src\app\page.tsx:39:52)
-  37 |         <div className="flex items-center gap-2">
-  38 |           <Heart className="w-6 h-6 text-violet-500" />
-> 39 |           <span className="text-lg font-semibold">{t('common:appName')}</span>
-     |                                                    ^
-  40 |         </div>
-  41 |         <div className="flex items-center gap-3">
-  42 |           <LanguageSwitcher /> {
+ GET / 200 in 1090ms (next.js: 800ms, application-code: 290ms)
+Error: MISSING_MESSAGE: Could not resolve `common.settings` in messages for locale `zh`.
+    at Home (src\app\page.tsx:24:20)
+  22 |             href="/settings"
+  23 |             className="p-2 text-stone-400 hover:text-violet-600 transition-colors"
+> 24 |             title={tc('settings') || '设置'}
+     |                    ^
+  25 |           >
+  26 |             <Settings className="w-5 h-5" />
+  27 |           </Link> {
   code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `home.common:appName` in messages for locale `zh`.'
+  originalMessage: 'Could not resolve `common.settings` in messages for locale `zh`.'
 }
-Error: MISSING_MESSAGE: Could not resolve `home.home.subtitle` in messages for locale `zh`.
-    at Home (src\app\page.tsx:88:14)
-  86 |           <div className="inline-flex items-center gap-2 px-3 py-1 bg-violet-50 text-viole...
-  87 |             <Sparkles className="w-4 h-4" />
-> 88 |             {t('home.subtitle')}
-     |              ^
-  89 |           </div>
-  90 |           <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-  91 |             {t('title').split('，')[0]}， {
+Error: MISSING_MESSAGE: Could not resolve `common.settings` in messages for locale `zh`.
+    at Home (src\app\page.tsx:24:20)
+  22 |             href="/settings"
+  23 |             className="p-2 text-stone-400 hover:text-violet-600 transition-colors"
+> 24 |             title={tc('settings') || '设置'}
+     |                    ^
+  25 |           >
+  26 |             <Settings className="w-5 h-5" />
+  27 |           </Link> {
   code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `home.home.subtitle` in messages for locale `zh`.'
+  originalMessage: 'Could not resolve `common.settings` in messages for locale `zh`.'
 }
-Error: MISSING_MESSAGE: Could not resolve `home.steps.1` in messages for locale `zh`.
-    at Home (src\app\page.tsx:143:41)
-  141 |         <div className="text-center space-y-8 mb-16 w-full">
-  142 |           <div className="flex flex-col md:flex-row gap-6 items-center justify-center">
-> 143 |             <StepCard number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: ''...
-      |                                         ^
-  144 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-  145 |             <StepCard number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  146 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md... {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `home.steps.1` in messages for locale `zh`.'
+\\app\\page\\build-manifest.json'
 }
-Error: MISSING_MESSAGE: Could not resolve `home.keywordsLabel` in messages for locale `zh`.
-    at Home (src\app\page.tsx:143:61)
-  141 | ...sName="text-center space-y-8 mb-16 w-full">
-  142 | ...assName="flex flex-col md:flex-row gap-6 items-center justify-center">
-> 143 | ...Card number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: '' })} />
-      |                                               ^
-  144 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-  145 | ...Card number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  146 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" /> {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `home.keywordsLabel` in messages for locale `zh`.'
+⨯ Error: Cannot find module '../chunks/ssr/[turbopack]_runtime.js'
+Require stack:
+- D:\opencode\digital-avatar\demo\.next\dev\server\pages\_document.js
+- D:\opencode\digital-avatar\demo\node_modules\next\dist\server\require.js
+- D:\opencode\digital-avatar\demo\node_modules\next\dist\server\load-components.js
+- D:\opencode\digital-avatar\demo\node_modules\next\dist\build\utils.js
+- D:\opencode\digital-avatar\demo\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\opencode\digital-avatar\demo\node_modules\next\dist\server\lib\router-server.js
+- D:\opencode\digital-avatar\demo\node_modules\next\dist\server\lib\start-server.js
+    at Object.<anonymous> (D:\opencode\digital-avatar\demo\.next\dev\server\pages\_document.js:1:7) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'D:\\opencode\\digital-avatar\\demo\\.next\\dev\\server\\pages\\_document.js',
+    'D:\\opencode\\digital-avatar\\demo\\node_modules\\next\\dist\\server\\require.js',
+    'D:\\opencode\\digital-avatar\\demo\\node_modules\\next\\dist\\server\\load-components.js',
+    'D:\\opencode\\digital-avatar\\demo\\node_modules\\next\\dist\\build\\utils.js',
+    'D:\\opencode\\digital-avatar\\demo\\node_modules\\next\\dist\\server\\lib\\router-utils\\setup-dev-bundler.js',
+    'D:\\opencode\\digital-avatar\\demo\\node_modules\\next\\dist\\server\\lib\\router-server.js',
+    'D:\\opencode\\digital-avatar\\demo\\node_modules\\next\\dist\\server\\lib\\start-server.js'
+  ]
 }
-Error: MISSING_MESSAGE: Could not resolve `home.steps.2` in messages for locale `zh`.
-    at Home (src\app\page.tsx:145:41)
-  143 |             <StepCard number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: ''...
-  144 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-> 145 |             <StepCard number={2} title={t('steps.2')} desc={t('photoDesc')} />
-      |                                         ^
-  146 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-  147 |             <StepCard number={3} title={t('steps.3')} desc={t('audioDesc')} />
-  148 |           </div> {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `home.steps.2` in messages for locale `zh`.'
+ GET / 500 in 1604ms (next.js: 1480ms, application-code: 124ms)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+⨯ Error: ENOENT: no such file or directory, open 'D:\opencode\digital-avatar\demo\.next\dev\server\app\page\build-manifest.json'
+    at ignore-listed frames {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\opencode\\digital-avatar\\demo\\.next\\dev\\server\\app\\page\\build-manifest.json'
 }
-Error: MISSING_MESSAGE: Could not resolve `home.photoDesc` in messages for locale `zh`.
-    at Home (src\app\page.tsx:145:61)
-  143 | ...Card number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: '' })} />
-  144 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-> 145 | ...Card number={2} title={t('steps.2')} desc={t('photoDesc')} />
-      |                                               ^
-  146 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-  147 | ...Card number={3} title={t('steps.3')} desc={t('audioDesc')} />
-  148 | ... {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `home.photoDesc` in messages for locale `zh`.'
+⨯ Error: Cannot find module '../chunks/ssr/[turbopack]_runtime.js'
+Require stack:
+- D:\opencode\digital-avatar\demo\.next\dev\server\pages\_document.js
+- D:\opencode\digital-avatar\demo\node_modules\next\dist\server\require.js
+- D:\opencode\digital-avatar\demo\node_modules\next\dist\server\load-components.js
+- D:\opencode\digital-avatar\demo\node_modules\next\dist\build\utils.js
+- D:\opencode\digital-avatar\demo\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\opencode\digital-avatar\demo\node_modules\next\dist\server\lib\router-server.js
+- D:\opencode\digital-avatar\demo\node_modules\next\dist\server\lib\start-server.js
+    at Object.<anonymous> (D:\opencode\digital-avatar\demo\.next\dev\server\pages\_document.js:1:7) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'D:\\opencode\\digital-avatar\\demo\\.next\\dev\\server\\pages\\_document.js',
+    'D:\\opencode\\digital-avatar\\demo\\node_modules\\next\\dist\\server\\require.js',
+    'D:\\opencode\\digital-avatar\\demo\\node_modules\\next\\dist\\server\\load-components.js',
+    'D:\\opencode\\digital-avatar\\demo\\node_modules\\next\\dist\\build\\utils.js',
+    'D:\\opencode\\digital-avatar\\demo\\node_modules\\next\\dist\\server\\lib\\router-utils\\setup-dev-bundler.js',
+    'D:\\opencode\\digital-avatar\\demo\\node_modules\\next\\dist\\server\\lib\\router-server.js',
+    'D:\\opencode\\digital-avatar\\demo\\node_modules\\next\\dist\\server\\lib\\start-server.js'
+  ]
 }
-Error: MISSING_MESSAGE: Could not resolve `home.steps.3` in messages for locale `zh`.
-    at Home (src\app\page.tsx:147:41)
-  145 |             <StepCard number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  146 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-> 147 |             <StepCard number={3} title={t('steps.3')} desc={t('audioDesc')} />
-      |                                         ^
-  148 |           </div>
-  149 |         </div>
-  150 | {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `home.steps.3` in messages for locale `zh`.'
-}
-Error: MISSING_MESSAGE: Could not resolve `home.audioDesc` in messages for locale `zh`.
-    at Home (src\app\page.tsx:147:61)
-  145 | ...Card number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  146 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-> 147 | ...Card number={3} title={t('steps.3')} desc={t('audioDesc')} />
-      |                                               ^
-  148 | ...
-  149 | ...
-  150 | ... {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `home.audioDesc` in messages for locale `zh`.'
-}
-Error: MISSING_MESSAGE: Could not resolve `home.common:appName` in messages for locale `zh`.
-    at Home (src\app\page.tsx:169:13)
-  167 |       {/* 底部 */}
-  168 |       <footer className="text-center py-8 text-sm text-stone-400 border-t border-stone-100">
-> 169 |         <p>{t('common:appName')} — Open Source & Privacy First</p>
-      |             ^
-  170 |         <p className="mt-1">AI-generated content, for memorial and family connection purp...
-  171 |       </footer>
-  172 |     </div> {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `home.common:appName` in messages for locale `zh`.'
-}
-Error: MISSING_MESSAGE: Could not resolve `home.common:appName` in messages for locale `zh`.
-    at Home (src\app\page.tsx:39:52)
-  37 |         <div className="flex items-center gap-2">
-  38 |           <Heart className="w-6 h-6 text-violet-500" />
-> 39 |           <span className="text-lg font-semibold">{t('common:appName')}</span>
-     |                                                    ^
-  40 |         </div>
-  41 |         <div className="flex items-center gap-3">
-  42 |           <LanguageSwitcher /> {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `home.common:appName` in messages for locale `zh`.'
-}
-Error: MISSING_MESSAGE: Could not resolve `home.home.subtitle` in messages for locale `zh`.
-    at Home (src\app\page.tsx:88:14)
-  86 |           <div className="inline-flex items-center gap-2 px-3 py-1 bg-violet-50 text-viole...
-  87 |             <Sparkles className="w-4 h-4" />
-> 88 |             {t('home.subtitle')}
-     |              ^
-  89 |           </div>
-  90 |           <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-  91 |             {t('title').split('，')[0]}， {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `home.home.subtitle` in messages for locale `zh`.'
-}
-Error: MISSING_MESSAGE: Could not resolve `home.steps.1` in messages for locale `zh`.
-    at Home (src\app\page.tsx:143:41)
-  141 |         <div className="text-center space-y-8 mb-16 w-full">
-  142 |           <div className="flex flex-col md:flex-row gap-6 items-center justify-center">
-> 143 |             <StepCard number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: ''...
-      |                                         ^
-  144 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-  145 |             <StepCard number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  146 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md... {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `home.steps.1` in messages for locale `zh`.'
-}
-Error: MISSING_MESSAGE: Could not resolve `home.keywordsLabel` in messages for locale `zh`.
-    at Home (src\app\page.tsx:143:61)
-  141 | ...sName="text-center space-y-8 mb-16 w-full">
-  142 | ...assName="flex flex-col md:flex-row gap-6 items-center justify-center">
-> 143 | ...Card number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: '' })} />
-      |                                               ^
-  144 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-  145 | ...Card number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  146 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" /> {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `home.keywordsLabel` in messages for locale `zh`.'
-}
-Error: MISSING_MESSAGE: Could not resolve `home.steps.2` in messages for locale `zh`.
-    at Home (src\app\page.tsx:145:41)
-  143 |             <StepCard number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: ''...
-  144 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-> 145 |             <StepCard number={2} title={t('steps.2')} desc={t('photoDesc')} />
-      |                                         ^
-  146 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-  147 |             <StepCard number={3} title={t('steps.3')} desc={t('audioDesc')} />
-  148 |           </div> {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `home.steps.2` in messages for locale `zh`.'
-}
-Error: MISSING_MESSAGE: Could not resolve `home.photoDesc` in messages for locale `zh`.
-    at Home (src\app\page.tsx:145:61)
-  143 | ...Card number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: '' })} />
-  144 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-> 145 | ...Card number={2} title={t('steps.2')} desc={t('photoDesc')} />
-      |                                               ^
-  146 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-  147 | ...Card number={3} title={t('steps.3')} desc={t('audioDesc')} />
-  148 | ... {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `home.photoDesc` in messages for locale `zh`.'
-}
-Error: MISSING_MESSAGE: Could not resolve `home.steps.3` in messages for locale `zh`.
-    at Home (src\app\page.tsx:147:41)
-  145 |             <StepCard number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  146 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-> 147 |             <StepCard number={3} title={t('steps.3')} desc={t('audioDesc')} />
-      |                                         ^
-  148 |           </div>
-  149 |         </div>
-  150 | {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `home.steps.3` in messages for locale `zh`.'
-}
-Error: MISSING_MESSAGE: Could not resolve `home.audioDesc` in messages for locale `zh`.
-    at Home (src\app\page.tsx:147:61)
-  145 | ...Card number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  146 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-> 147 | ...Card number={3} title={t('steps.3')} desc={t('audioDesc')} />
-      |                                               ^
-  148 | ...
-  149 | ...
-  150 | ... {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `home.audioDesc` in messages for locale `zh`.'
-}
-Error: MISSING_MESSAGE: Could not resolve `home.common:appName` in messages for locale `zh`.
-    at Home (src\app\page.tsx:169:13)
-  167 |       {/* 底部 */}
-  168 |       <footer className="text-center py-8 text-sm text-stone-400 border-t border-stone-100">
-> 169 |         <p>{t('common:appName')} — Open Source & Privacy First</p>
-      |             ^
-  170 |         <p className="mt-1">AI-generated content, for memorial and family connection purp...
-  171 |       </footer>
-  172 |     </div> {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `home.common:appName` in messages for locale `zh`.'
-}
- GET / 200 in 1748ms (next.js: 1369ms, proxy.ts: 6ms, application-code: 372ms)
- GET / 200 in 6.2s (next.js: 5.7s, proxy.ts: 89ms, application-code: 446ms)
-Error: MISSING_MESSAGE: Could not resolve `common:appName` in messages for locale `zh`.
-    at PricingPage (src\app\pricing\page.tsx:27:52)
-  25 |         <div className="flex items-center gap-2">
-  26 |           <Heart className="w-6 h-6 text-violet-500" />
-> 27 |           <span className="text-lg font-semibold">{t('common:appName')}</span>
-     |                                                    ^
-  28 |         </div>
-  29 |         <div className="flex items-center gap-3">
-  30 |           <LanguageSwitcher /> {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `common:appName` in messages for locale `zh`.'
-}
-Error: MISSING_MESSAGE: Could not resolve `common:appName` in messages for locale `zh`.
-    at PricingPage (src\app\pricing\page.tsx:204:47)
-  202 | ...
-  203 | ...   <footer className="text-center py-8 text-sm text-stone-400 border-t border-stone-10...
-> 204 | ...     <p>&copy; {new Date().getFullYear()} {t('common:appName')}</p>
-      |                                               ^
-  205 | ...   </footer>
-  206 | ... </div>
-  207 | ...; {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `common:appName` in messages for locale `zh`.'
-}
- GET /pricing 200 in 579ms (next.js: 488ms, proxy.ts: 7ms, application-code: 85ms)
- GET /share/test-id 200 in 954ms (next.js: 889ms, proxy.ts: 4ms, application-code: 60ms)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.common:appName` in messages for locale `zh`.
-    at Home (src/app/page.tsx:39:52)
-  37 |         <div className="flex items-center gap-2">
-  38 |           <Heart className="w-6 h-6 text-violet-500" />
-> 39 |           <span className="text-lg font-semibold">{t('common:appName')}</span>
-     |                                                    ^
-  40 |         </div>
-  41 |         <div className="flex items-center gap-3">
-  42 |           <LanguageSwitcher /> (src/app/page.tsx:39:52)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.home.subtitle` in messages for locale `zh`.
-    at Home (src/app/page.tsx:88:14)
-  86 |           <div className="inline-flex items-center gap-2 px-3 py-1 bg-violet-50 text-viole...
-  87 |             <Sparkles className="w-4 h-4" />
-> 88 |             {t('home.subtitle')}
-     |              ^
-  89 |           </div>
-  90 |           <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-  91 |             {t('title').split('，')[0]}， (src/app/page.tsx:88:14)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.steps.1` in messages for locale `zh`.
-    at Home (src/app/page.tsx:143:41)
-  141 |         <div className="text-center space-y-8 mb-16 w-full">
-  142 |           <div className="flex flex-col md:flex-row gap-6 items-center justify-center">
-> 143 |             <StepCard number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: ''...
-      |                                         ^
-  144 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-  145 |             <StepCard number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  146 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md... (src/app/page.tsx:143:41)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.keywordsLabel` in messages for locale `zh`.
-    at Home (src/app/page.tsx:143:61)
-  141 | ...sName="text-center space-y-8 mb-16 w-full">
-  142 | ...assName="flex flex-col md:flex-row gap-6 items-center justify-center">
-> 143 | ...Card number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: '' })} />
-      |                                               ^
-  144 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-  145 | ...Card number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  146 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" /> (src/app/page.tsx:143:61)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.steps.2` in messages for locale `zh`.
-    at Home (src/app/page.tsx:145:41)
-  143 |             <StepCard number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: ''...
-  144 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-> 145 |             <StepCard number={2} title={t('steps.2')} desc={t('photoDesc')} />
-      |                                         ^
-  146 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-  147 |             <StepCard number={3} title={t('steps.3')} desc={t('audioDesc')} />
-  148 |           </div> (src/app/page.tsx:145:41)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.photoDesc` in messages for locale `zh`.
-    at Home (src/app/page.tsx:145:61)
-  143 | ...Card number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: '' })} />
-  144 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-> 145 | ...Card number={2} title={t('steps.2')} desc={t('photoDesc')} />
-      |                                               ^
-  146 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-  147 | ...Card number={3} title={t('steps.3')} desc={t('audioDesc')} />
-  148 | ... (src/app/page.tsx:145:61)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.steps.3` in messages for locale `zh`.
-    at Home (src/app/page.tsx:147:41)
-  145 |             <StepCard number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  146 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-> 147 |             <StepCard number={3} title={t('steps.3')} desc={t('audioDesc')} />
-      |                                         ^
-  148 |           </div>
-  149 |         </div>
-  150 | (src/app/page.tsx:147:41)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.audioDesc` in messages for locale `zh`.
-    at Home (src/app/page.tsx:147:61)
-  145 | ...Card number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  146 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-> 147 | ...Card number={3} title={t('steps.3')} desc={t('audioDesc')} />
-      |                                               ^
-  148 | ...
-  149 | ...
-  150 | ... (src/app/page.tsx:147:61)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.common:appName` in messages for locale `zh`.
-    at Home (src/app/page.tsx:169:13)
-  167 |       {/* 底部 */}
-  168 |       <footer className="text-center py-8 text-sm text-stone-400 border-t border-stone-100">
-> 169 |         <p>{t('common:appName')} — Open Source & Privacy First</p>
-      |             ^
-  170 |         <p className="mt-1">AI-generated content, for memorial and family connection purp...
-  171 |       </footer>
-  172 |     </div> (src/app/page.tsx:169:13)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.common:appName` in messages for locale `zh`.
-    at Home (src/app/page.tsx:39:52)
-  37 |         <div className="flex items-center gap-2">
-  38 |           <Heart className="w-6 h-6 text-violet-500" />
-> 39 |           <span className="text-lg font-semibold">{t('common:appName')}</span>
-     |                                                    ^
-  40 |         </div>
-  41 |         <div className="flex items-center gap-3">
-  42 |           <LanguageSwitcher /> (src/app/page.tsx:39:52)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.home.subtitle` in messages for locale `zh`.
-    at Home (src/app/page.tsx:88:14)
-  86 |           <div className="inline-flex items-center gap-2 px-3 py-1 bg-violet-50 text-viole...
-  87 |             <Sparkles className="w-4 h-4" />
-> 88 |             {t('home.subtitle')}
-     |              ^
-  89 |           </div>
-  90 |           <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-  91 |             {t('title').split('，')[0]}， (src/app/page.tsx:88:14)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.steps.1` in messages for locale `zh`.
-    at Home (src/app/page.tsx:143:41)
-  141 |         <div className="text-center space-y-8 mb-16 w-full">
-  142 |           <div className="flex flex-col md:flex-row gap-6 items-center justify-center">
-> 143 |             <StepCard number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: ''...
-      |                                         ^
-  144 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-  145 |             <StepCard number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  146 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md... (src/app/page.tsx:143:41)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.keywordsLabel` in messages for locale `zh`.
-    at Home (src/app/page.tsx:143:61)
-  141 | ...sName="text-center space-y-8 mb-16 w-full">
-  142 | ...assName="flex flex-col md:flex-row gap-6 items-center justify-center">
-> 143 | ...Card number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: '' })} />
-      |                                               ^
-  144 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-  145 | ...Card number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  146 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" /> (src/app/page.tsx:143:61)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.steps.2` in messages for locale `zh`.
-    at Home (src/app/page.tsx:145:41)
-  143 |             <StepCard number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: ''...
-  144 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-> 145 |             <StepCard number={2} title={t('steps.2')} desc={t('photoDesc')} />
-      |                                         ^
-  146 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-  147 |             <StepCard number={3} title={t('steps.3')} desc={t('audioDesc')} />
-  148 |           </div> (src/app/page.tsx:145:41)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.photoDesc` in messages for locale `zh`.
-    at Home (src/app/page.tsx:145:61)
-  143 | ...Card number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: '' })} />
-  144 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-> 145 | ...Card number={2} title={t('steps.2')} desc={t('photoDesc')} />
-      |                                               ^
-  146 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-  147 | ...Card number={3} title={t('steps.3')} desc={t('audioDesc')} />
-  148 | ... (src/app/page.tsx:145:61)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.steps.3` in messages for locale `zh`.
-    at Home (src/app/page.tsx:147:41)
-  145 |             <StepCard number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  146 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-> 147 |             <StepCard number={3} title={t('steps.3')} desc={t('audioDesc')} />
-      |                                         ^
-  148 |           </div>
-  149 |         </div>
-  150 | (src/app/page.tsx:147:41)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.audioDesc` in messages for locale `zh`.
-    at Home (src/app/page.tsx:147:61)
-  145 | ...Card number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  146 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-> 147 | ...Card number={3} title={t('steps.3')} desc={t('audioDesc')} />
-      |                                               ^
-  148 | ...
-  149 | ...
-  150 | ... (src/app/page.tsx:147:61)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.common:appName` in messages for locale `zh`.
-    at Home (src/app/page.tsx:169:13)
-  167 |       {/* 底部 */}
-  168 |       <footer className="text-center py-8 text-sm text-stone-400 border-t border-stone-100">
-> 169 |         <p>{t('common:appName')} — Open Source & Privacy First</p>
-      |             ^
-  170 |         <p className="mt-1">AI-generated content, for memorial and family connection purp...
-  171 |       </footer>
-  172 |     </div> (src/app/page.tsx:169:13)
-✓ Compiled in 72ms
-✓ Compiled in 59ms
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.common:appName` in messages for locale `zh`.
-    at Home (src/app/page.tsx:40:52)
-    at Set.forEach (<anonymous>)
-  38 |         <div className="flex items-center gap-2">
-  39 |           <Heart className="w-6 h-6 text-violet-500" />
-> 40 |           <span className="text-lg font-semibold">{tc('appName')}</span>
-     |                                                    ^
-  41 |         </div>
-  42 |         <div className="flex items-center gap-3">
-  43 |           <LanguageSwitcher /> (src/app/page.tsx:40:52)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.home.subtitle` in messages for locale `zh`.
-    at Home (src/app/page.tsx:89:14)
-    at Set.forEach (<anonymous>)
-  87 |           <div className="inline-flex items-center gap-2 px-3 py-1 bg-violet-50 text-viole...
-  88 |             <Sparkles className="w-4 h-4" />
-> 89 |             {t('home.subtitle')}
-     |              ^
-  90 |           </div>
-  91 |           <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-  92 |             {t('title').split('，')[0]}， (src/app/page.tsx:89:14)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.steps.1` in messages for locale `zh`.
-    at Home (src/app/page.tsx:144:41)
-    at Set.forEach (<anonymous>)
-  142 |         <div className="text-center space-y-8 mb-16 w-full">
-  143 |           <div className="flex flex-col md:flex-row gap-6 items-center justify-center">
-> 144 |             <StepCard number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: ''...
-      |                                         ^
-  145 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-  146 |             <StepCard number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  147 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md... (src/app/page.tsx:144:41)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.keywordsLabel` in messages for locale `zh`.
-    at Home (src/app/page.tsx:144:61)
-    at Set.forEach (<anonymous>)
-  142 | ...sName="text-center space-y-8 mb-16 w-full">
-  143 | ...assName="flex flex-col md:flex-row gap-6 items-center justify-center">
-> 144 | ...Card number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: '' })} />
-      |                                               ^
-  145 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-  146 | ...Card number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  147 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" /> (src/app/page.tsx:144:61)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.steps.2` in messages for locale `zh`.
-    at Home (src/app/page.tsx:146:41)
-    at Set.forEach (<anonymous>)
-  144 |             <StepCard number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: ''...
-  145 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-> 146 |             <StepCard number={2} title={t('steps.2')} desc={t('photoDesc')} />
-      |                                         ^
-  147 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-  148 |             <StepCard number={3} title={t('steps.3')} desc={t('audioDesc')} />
-  149 |           </div> (src/app/page.tsx:146:41)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.photoDesc` in messages for locale `zh`.
-    at Home (src/app/page.tsx:146:61)
-    at Set.forEach (<anonymous>)
-  144 | ...Card number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: '' })} />
-  145 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-> 146 | ...Card number={2} title={t('steps.2')} desc={t('photoDesc')} />
-      |                                               ^
-  147 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-  148 | ...Card number={3} title={t('steps.3')} desc={t('audioDesc')} />
-  149 | ... (src/app/page.tsx:146:61)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.steps.3` in messages for locale `zh`.
-    at Home (src/app/page.tsx:148:41)
-    at Set.forEach (<anonymous>)
-  146 |             <StepCard number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  147 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-> 148 |             <StepCard number={3} title={t('steps.3')} desc={t('audioDesc')} />
-      |                                         ^
-  149 |           </div>
-  150 |         </div>
-  151 | (src/app/page.tsx:148:41)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.audioDesc` in messages for locale `zh`.
-    at Home (src/app/page.tsx:148:61)
-    at Set.forEach (<anonymous>)
-  146 | ...Card number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  147 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-> 148 | ...Card number={3} title={t('steps.3')} desc={t('audioDesc')} />
-      |                                               ^
-  149 | ...
-  150 | ...
-  151 | ... (src/app/page.tsx:148:61)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.common:appName` in messages for locale `zh`.
-    at Home (src/app/page.tsx:170:13)
-    at Set.forEach (<anonymous>)
-  168 |       {/* 底部 */}
-  169 |       <footer className="text-center py-8 text-sm text-stone-400 border-t border-stone-100">
-> 170 |         <p>{tc('appName')} — Open Source & Privacy First</p>
-      |             ^
-  171 |         <p className="mt-1">AI-generated content, for memorial and family connection purp...
-  172 |       </footer>
-  173 |     </div> (src/app/page.tsx:170:13)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.common:appName` in messages for locale `zh`.
-    at Home (src/app/page.tsx:40:52)
-    at Set.forEach (<anonymous>)
-  38 |         <div className="flex items-center gap-2">
-  39 |           <Heart className="w-6 h-6 text-violet-500" />
-> 40 |           <span className="text-lg font-semibold">{tc('appName')}</span>
-     |                                                    ^
-  41 |         </div>
-  42 |         <div className="flex items-center gap-3">
-  43 |           <LanguageSwitcher /> (src/app/page.tsx:40:52)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.home.subtitle` in messages for locale `zh`.
-    at Home (src/app/page.tsx:89:14)
-    at Set.forEach (<anonymous>)
-  87 |           <div className="inline-flex items-center gap-2 px-3 py-1 bg-violet-50 text-viole...
-  88 |             <Sparkles className="w-4 h-4" />
-> 89 |             {t('home.subtitle')}
-     |              ^
-  90 |           </div>
-  91 |           <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-  92 |             {t('title').split('，')[0]}， (src/app/page.tsx:89:14)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.steps.1` in messages for locale `zh`.
-    at Home (src/app/page.tsx:144:41)
-    at Set.forEach (<anonymous>)
-  142 |         <div className="text-center space-y-8 mb-16 w-full">
-  143 |           <div className="flex flex-col md:flex-row gap-6 items-center justify-center">
-> 144 |             <StepCard number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: ''...
-      |                                         ^
-  145 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-  146 |             <StepCard number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  147 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md... (src/app/page.tsx:144:41)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.keywordsLabel` in messages for locale `zh`.
-    at Home (src/app/page.tsx:144:61)
-    at Set.forEach (<anonymous>)
-  142 | ...sName="text-center space-y-8 mb-16 w-full">
-  143 | ...assName="flex flex-col md:flex-row gap-6 items-center justify-center">
-> 144 | ...Card number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: '' })} />
-      |                                               ^
-  145 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-  146 | ...Card number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  147 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" /> (src/app/page.tsx:144:61)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.steps.2` in messages for locale `zh`.
-    at Home (src/app/page.tsx:146:41)
-    at Set.forEach (<anonymous>)
-  144 |             <StepCard number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: ''...
-  145 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-> 146 |             <StepCard number={2} title={t('steps.2')} desc={t('photoDesc')} />
-      |                                         ^
-  147 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-  148 |             <StepCard number={3} title={t('steps.3')} desc={t('audioDesc')} />
-  149 |           </div> (src/app/page.tsx:146:41)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.photoDesc` in messages for locale `zh`.
-    at Home (src/app/page.tsx:146:61)
-    at Set.forEach (<anonymous>)
-  144 | ...Card number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: '' })} />
-  145 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-> 146 | ...Card number={2} title={t('steps.2')} desc={t('photoDesc')} />
-      |                                               ^
-  147 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-  148 | ...Card number={3} title={t('steps.3')} desc={t('audioDesc')} />
-  149 | ... (src/app/page.tsx:146:61)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.steps.3` in messages for locale `zh`.
-    at Home (src/app/page.tsx:148:41)
-    at Set.forEach (<anonymous>)
-  146 |             <StepCard number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  147 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-> 148 |             <StepCard number={3} title={t('steps.3')} desc={t('audioDesc')} />
-      |                                         ^
-  149 |           </div>
-  150 |         </div>
-  151 | (src/app/page.tsx:148:41)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.audioDesc` in messages for locale `zh`.
-    at Home (src/app/page.tsx:148:61)
-    at Set.forEach (<anonymous>)
-  146 | ...Card number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  147 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-> 148 | ...Card number={3} title={t('steps.3')} desc={t('audioDesc')} />
-      |                                               ^
-  149 | ...
-  150 | ...
-  151 | ... (src/app/page.tsx:148:61)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.common:appName` in messages for locale `zh`.
-    at Home (src/app/page.tsx:170:13)
-    at Set.forEach (<anonymous>)
-  168 |       {/* 底部 */}
-  169 |       <footer className="text-center py-8 text-sm text-stone-400 border-t border-stone-100">
-> 170 |         <p>{tc('appName')} — Open Source & Privacy First</p>
-      |             ^
-  171 |         <p className="mt-1">AI-generated content, for memorial and family connection purp...
-  172 |       </footer>
-  173 |     </div> (src/app/page.tsx:170:13)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.home.subtitle` in messages for locale `zh`.
-    at Home (src/app/page.tsx:89:14)
-    at Set.forEach (<anonymous>)
-  87 |           <div className="inline-flex items-center gap-2 px-3 py-1 bg-violet-50 text-viole...
-  88 |             <Sparkles className="w-4 h-4" />
-> 89 |             {t('home.subtitle')}
-     |              ^
-  90 |           </div>
-  91 |           <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-  92 |             {t('title').split('，')[0]}， (src/app/page.tsx:89:14)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.steps.1` in messages for locale `zh`.
-    at Home (src/app/page.tsx:144:41)
-    at Set.forEach (<anonymous>)
-  142 |         <div className="text-center space-y-8 mb-16 w-full">
-  143 |           <div className="flex flex-col md:flex-row gap-6 items-center justify-center">
-> 144 |             <StepCard number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: ''...
-      |                                         ^
-  145 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-  146 |             <StepCard number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  147 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md... (src/app/page.tsx:144:41)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.keywordsLabel` in messages for locale `zh`.
-    at Home (src/app/page.tsx:144:61)
-    at Set.forEach (<anonymous>)
-  142 | ...sName="text-center space-y-8 mb-16 w-full">
-  143 | ...assName="flex flex-col md:flex-row gap-6 items-center justify-center">
-> 144 | ...Card number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: '' })} />
-      |                                               ^
-  145 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-  146 | ...Card number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  147 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" /> (src/app/page.tsx:144:61)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.steps.2` in messages for locale `zh`.
-    at Home (src/app/page.tsx:146:41)
-    at Set.forEach (<anonymous>)
-  144 |             <StepCard number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: ''...
-  145 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-> 146 |             <StepCard number={2} title={t('steps.2')} desc={t('photoDesc')} />
-      |                                         ^
-  147 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-  148 |             <StepCard number={3} title={t('steps.3')} desc={t('audioDesc')} />
-  149 |           </div> (src/app/page.tsx:146:41)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.photoDesc` in messages for locale `zh`.
-    at Home (src/app/page.tsx:146:61)
-    at Set.forEach (<anonymous>)
-  144 | ...Card number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: '' })} />
-  145 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-> 146 | ...Card number={2} title={t('steps.2')} desc={t('photoDesc')} />
-      |                                               ^
-  147 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-  148 | ...Card number={3} title={t('steps.3')} desc={t('audioDesc')} />
-  149 | ... (src/app/page.tsx:146:61)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.steps.3` in messages for locale `zh`.
-    at Home (src/app/page.tsx:148:41)
-    at Set.forEach (<anonymous>)
-  146 |             <StepCard number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  147 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-> 148 |             <StepCard number={3} title={t('steps.3')} desc={t('audioDesc')} />
-      |                                         ^
-  149 |           </div>
-  150 |         </div>
-  151 | (src/app/page.tsx:148:41)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.audioDesc` in messages for locale `zh`.
-    at Home (src/app/page.tsx:148:61)
-    at Set.forEach (<anonymous>)
-  146 | ...Card number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  147 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-> 148 | ...Card number={3} title={t('steps.3')} desc={t('audioDesc')} />
-      |                                               ^
-  149 | ...
-  150 | ...
-  151 | ... (src/app/page.tsx:148:61)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.home.subtitle` in messages for locale `zh`.
-    at Home (src/app/page.tsx:89:14)
-    at Set.forEach (<anonymous>)
-  87 |           <div className="inline-flex items-center gap-2 px-3 py-1 bg-violet-50 text-viole...
-  88 |             <Sparkles className="w-4 h-4" />
-> 89 |             {t('home.subtitle')}
-     |              ^
-  90 |           </div>
-  91 |           <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-  92 |             {t('title').split('，')[0]}， (src/app/page.tsx:89:14)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.steps.1` in messages for locale `zh`.
-    at Home (src/app/page.tsx:144:41)
-    at Set.forEach (<anonymous>)
-  142 |         <div className="text-center space-y-8 mb-16 w-full">
-  143 |           <div className="flex flex-col md:flex-row gap-6 items-center justify-center">
-> 144 |             <StepCard number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: ''...
-      |                                         ^
-  145 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-  146 |             <StepCard number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  147 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md... (src/app/page.tsx:144:41)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.keywordsLabel` in messages for locale `zh`.
-    at Home (src/app/page.tsx:144:61)
-    at Set.forEach (<anonymous>)
-  142 | ...sName="text-center space-y-8 mb-16 w-full">
-  143 | ...assName="flex flex-col md:flex-row gap-6 items-center justify-center">
-> 144 | ...Card number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: '' })} />
-      |                                               ^
-  145 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-  146 | ...Card number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  147 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" /> (src/app/page.tsx:144:61)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.steps.2` in messages for locale `zh`.
-    at Home (src/app/page.tsx:146:41)
-    at Set.forEach (<anonymous>)
-  144 |             <StepCard number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: ''...
-  145 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-> 146 |             <StepCard number={2} title={t('steps.2')} desc={t('photoDesc')} />
-      |                                         ^
-  147 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-  148 |             <StepCard number={3} title={t('steps.3')} desc={t('audioDesc')} />
-  149 |           </div> (src/app/page.tsx:146:41)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.photoDesc` in messages for locale `zh`.
-    at Home (src/app/page.tsx:146:61)
-    at Set.forEach (<anonymous>)
-  144 | ...Card number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: '' })} />
-  145 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-> 146 | ...Card number={2} title={t('steps.2')} desc={t('photoDesc')} />
-      |                                               ^
-  147 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-  148 | ...Card number={3} title={t('steps.3')} desc={t('audioDesc')} />
-  149 | ... (src/app/page.tsx:146:61)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.steps.3` in messages for locale `zh`.
-    at Home (src/app/page.tsx:148:41)
-    at Set.forEach (<anonymous>)
-  146 |             <StepCard number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  147 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-> 148 |             <StepCard number={3} title={t('steps.3')} desc={t('audioDesc')} />
-      |                                         ^
-  149 |           </div>
-  150 |         </div>
-  151 | (src/app/page.tsx:148:41)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.audioDesc` in messages for locale `zh`.
-    at Home (src/app/page.tsx:148:61)
-    at Set.forEach (<anonymous>)
-  146 | ...Card number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  147 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-> 148 | ...Card number={3} title={t('steps.3')} desc={t('audioDesc')} />
-      |                                               ^
-  149 | ...
-  150 | ...
-  151 | ... (src/app/page.tsx:148:61)
-Error: MISSING_MESSAGE: Could not resolve `home.home.subtitle` in messages for locale `zh`.
-    at Home (src\app\page.tsx:89:14)
-  87 |           <div className="inline-flex items-center gap-2 px-3 py-1 bg-violet-50 text-viole...
-  88 |             <Sparkles className="w-4 h-4" />
-> 89 |             {t('home.subtitle')}
-     |              ^
-  90 |           </div>
-  91 |           <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-  92 |             {t('title').split('，')[0]}， {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `home.home.subtitle` in messages for locale `zh`.'
-}
-Error: MISSING_MESSAGE: Could not resolve `home.steps.1` in messages for locale `zh`.
-    at Home (src\app\page.tsx:144:41)
-  142 |         <div className="text-center space-y-8 mb-16 w-full">
-  143 |           <div className="flex flex-col md:flex-row gap-6 items-center justify-center">
-> 144 |             <StepCard number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: ''...
-      |                                         ^
-  145 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-  146 |             <StepCard number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  147 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md... {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `home.steps.1` in messages for locale `zh`.'
-}
-Error: MISSING_MESSAGE: Could not resolve `home.keywordsLabel` in messages for locale `zh`.
-    at Home (src\app\page.tsx:144:61)
-  142 | ...sName="text-center space-y-8 mb-16 w-full">
-  143 | ...assName="flex flex-col md:flex-row gap-6 items-center justify-center">
-> 144 | ...Card number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: '' })} />
-      |                                               ^
-  145 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-  146 | ...Card number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  147 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" /> {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `home.keywordsLabel` in messages for locale `zh`.'
-}
-Error: MISSING_MESSAGE: Could not resolve `home.steps.2` in messages for locale `zh`.
-    at Home (src\app\page.tsx:146:41)
-  144 |             <StepCard number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: ''...
-  145 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-> 146 |             <StepCard number={2} title={t('steps.2')} desc={t('photoDesc')} />
-      |                                         ^
-  147 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-  148 |             <StepCard number={3} title={t('steps.3')} desc={t('audioDesc')} />
-  149 |           </div> {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `home.steps.2` in messages for locale `zh`.'
-}
-Error: MISSING_MESSAGE: Could not resolve `home.photoDesc` in messages for locale `zh`.
-    at Home (src\app\page.tsx:146:61)
-  144 | ...Card number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: '' })} />
-  145 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-> 146 | ...Card number={2} title={t('steps.2')} desc={t('photoDesc')} />
-      |                                               ^
-  147 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-  148 | ...Card number={3} title={t('steps.3')} desc={t('audioDesc')} />
-  149 | ... {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `home.photoDesc` in messages for locale `zh`.'
-}
-Error: MISSING_MESSAGE: Could not resolve `home.steps.3` in messages for locale `zh`.
-    at Home (src\app\page.tsx:148:41)
-  146 |             <StepCard number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  147 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-> 148 |             <StepCard number={3} title={t('steps.3')} desc={t('audioDesc')} />
-      |                                         ^
-  149 |           </div>
-  150 |         </div>
-  151 | {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `home.steps.3` in messages for locale `zh`.'
-}
-Error: MISSING_MESSAGE: Could not resolve `home.audioDesc` in messages for locale `zh`.
-    at Home (src\app\page.tsx:148:61)
-  146 | ...Card number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  147 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-> 148 | ...Card number={3} title={t('steps.3')} desc={t('audioDesc')} />
-      |                                               ^
-  149 | ...
-  150 | ...
-  151 | ... {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `home.audioDesc` in messages for locale `zh`.'
-}
- GET / 200 in 271ms (next.js: 65ms, proxy.ts: 5ms, application-code: 201ms)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.home.subtitle` in messages for locale `zh`.
-    at Home (src/app/page.tsx:89:14)
-  87 |           <div className="inline-flex items-center gap-2 px-3 py-1 bg-violet-50 text-viole...
-  88 |             <Sparkles className="w-4 h-4" />
-> 89 |             {t('home.subtitle')}
-     |              ^
-  90 |           </div>
-  91 |           <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-  92 |             {t('title').split('，')[0]}， (src/app/page.tsx:89:14)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.steps.1` in messages for locale `zh`.
-    at Home (src/app/page.tsx:144:41)
-  142 |         <div className="text-center space-y-8 mb-16 w-full">
-  143 |           <div className="flex flex-col md:flex-row gap-6 items-center justify-center">
-> 144 |             <StepCard number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: ''...
-      |                                         ^
-  145 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-  146 |             <StepCard number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  147 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md... (src/app/page.tsx:144:41)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.keywordsLabel` in messages for locale `zh`.
-    at Home (src/app/page.tsx:144:61)
-  142 | ...sName="text-center space-y-8 mb-16 w-full">
-  143 | ...assName="flex flex-col md:flex-row gap-6 items-center justify-center">
-> 144 | ...Card number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: '' })} />
-      |                                               ^
-  145 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-  146 | ...Card number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  147 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" /> (src/app/page.tsx:144:61)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.steps.2` in messages for locale `zh`.
-    at Home (src/app/page.tsx:146:41)
-  144 |             <StepCard number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: ''...
-  145 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-> 146 |             <StepCard number={2} title={t('steps.2')} desc={t('photoDesc')} />
-      |                                         ^
-  147 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-  148 |             <StepCard number={3} title={t('steps.3')} desc={t('audioDesc')} />
-  149 |           </div> (src/app/page.tsx:146:41)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.photoDesc` in messages for locale `zh`.
-    at Home (src/app/page.tsx:146:61)
-  144 | ...Card number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: '' })} />
-  145 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-> 146 | ...Card number={2} title={t('steps.2')} desc={t('photoDesc')} />
-      |                                               ^
-  147 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-  148 | ...Card number={3} title={t('steps.3')} desc={t('audioDesc')} />
-  149 | ... (src/app/page.tsx:146:61)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.steps.3` in messages for locale `zh`.
-    at Home (src/app/page.tsx:148:41)
-  146 |             <StepCard number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  147 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-> 148 |             <StepCard number={3} title={t('steps.3')} desc={t('audioDesc')} />
-      |                                         ^
-  149 |           </div>
-  150 |         </div>
-  151 | (src/app/page.tsx:148:41)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.audioDesc` in messages for locale `zh`.
-    at Home (src/app/page.tsx:148:61)
-  146 | ...Card number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  147 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-> 148 | ...Card number={3} title={t('steps.3')} desc={t('audioDesc')} />
-      |                                               ^
-  149 | ...
-  150 | ...
-  151 | ... (src/app/page.tsx:148:61)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.home.subtitle` in messages for locale `zh`.
-    at Home (src/app/page.tsx:89:14)
-  87 |           <div className="inline-flex items-center gap-2 px-3 py-1 bg-violet-50 text-viole...
-  88 |             <Sparkles className="w-4 h-4" />
-> 89 |             {t('home.subtitle')}
-     |              ^
-  90 |           </div>
-  91 |           <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-  92 |             {t('title').split('，')[0]}， (src/app/page.tsx:89:14)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.steps.1` in messages for locale `zh`.
-    at Home (src/app/page.tsx:144:41)
-  142 |         <div className="text-center space-y-8 mb-16 w-full">
-  143 |           <div className="flex flex-col md:flex-row gap-6 items-center justify-center">
-> 144 |             <StepCard number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: ''...
-      |                                         ^
-  145 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-  146 |             <StepCard number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  147 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md... (src/app/page.tsx:144:41)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.keywordsLabel` in messages for locale `zh`.
-    at Home (src/app/page.tsx:144:61)
-  142 | ...sName="text-center space-y-8 mb-16 w-full">
-  143 | ...assName="flex flex-col md:flex-row gap-6 items-center justify-center">
-> 144 | ...Card number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: '' })} />
-      |                                               ^
-  145 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-  146 | ...Card number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  147 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" /> (src/app/page.tsx:144:61)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.steps.2` in messages for locale `zh`.
-    at Home (src/app/page.tsx:146:41)
-  144 |             <StepCard number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: ''...
-  145 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-> 146 |             <StepCard number={2} title={t('steps.2')} desc={t('photoDesc')} />
-      |                                         ^
-  147 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-  148 |             <StepCard number={3} title={t('steps.3')} desc={t('audioDesc')} />
-  149 |           </div> (src/app/page.tsx:146:41)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.photoDesc` in messages for locale `zh`.
-    at Home (src/app/page.tsx:146:61)
-  144 | ...Card number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: '' })} />
-  145 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-> 146 | ...Card number={2} title={t('steps.2')} desc={t('photoDesc')} />
-      |                                               ^
-  147 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-  148 | ...Card number={3} title={t('steps.3')} desc={t('audioDesc')} />
-  149 | ... (src/app/page.tsx:146:61)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.steps.3` in messages for locale `zh`.
-    at Home (src/app/page.tsx:148:41)
-  146 |             <StepCard number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  147 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-> 148 |             <StepCard number={3} title={t('steps.3')} desc={t('audioDesc')} />
-      |                                         ^
-  149 |           </div>
-  150 |         </div>
-  151 | (src/app/page.tsx:148:41)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.audioDesc` in messages for locale `zh`.
-    at Home (src/app/page.tsx:148:61)
-  146 | ...Card number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  147 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-> 148 | ...Card number={3} title={t('steps.3')} desc={t('audioDesc')} />
-      |                                               ^
-  149 | ...
-  150 | ...
-  151 | ... (src/app/page.tsx:148:61)
-✓ Compiled in 42ms
- GET / 200 in 128ms (next.js: 62ms, proxy.ts: 12ms, application-code: 54ms)
- GET / 200 in 88ms (next.js: 14ms, proxy.ts: 8ms, application-code: 66ms)
- GET / 200 in 37ms (next.js: 6ms, proxy.ts: 7ms, application-code: 23ms)
- GET / 200 in 176ms (next.js: 53ms, proxy.ts: 10ms, application-code: 114ms)
- GET / 200 in 87ms (next.js: 6ms, proxy.ts: 6ms, application-code: 74ms)
- GET / 200 in 55ms (next.js: 11ms, proxy.ts: 5ms, application-code: 39ms)
- GET / 200 in 104ms (next.js: 4ms, proxy.ts: 4ms, application-code: 96ms)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.steps.1` in messages for locale `zh`.
-    at Home (src/app/page.tsx:144:41)
-    at Set.forEach (<anonymous>)
-  142 |         <div className="text-center space-y-8 mb-16 w-full">
-  143 |           <div className="flex flex-col md:flex-row gap-6 items-center justify-center">
-> 144 |             <StepCard number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: ''...
-      |                                         ^
-  145 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-  146 |             <StepCard number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  147 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md... (src/app/page.tsx:144:41)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.keywordsLabel` in messages for locale `zh`.
-    at Home (src/app/page.tsx:144:61)
-    at Set.forEach (<anonymous>)
-  142 | ...sName="text-center space-y-8 mb-16 w-full">
-  143 | ...assName="flex flex-col md:flex-row gap-6 items-center justify-center">
-> 144 | ...Card number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: '' })} />
-      |                                               ^
-  145 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-  146 | ...Card number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  147 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" /> (src/app/page.tsx:144:61)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.steps.2` in messages for locale `zh`.
-    at Home (src/app/page.tsx:146:41)
-    at Set.forEach (<anonymous>)
-  144 |             <StepCard number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: ''...
-  145 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-> 146 |             <StepCard number={2} title={t('steps.2')} desc={t('photoDesc')} />
-      |                                         ^
-  147 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-  148 |             <StepCard number={3} title={t('steps.3')} desc={t('audioDesc')} />
-  149 |           </div> (src/app/page.tsx:146:41)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.photoDesc` in messages for locale `zh`.
-    at Home (src/app/page.tsx:146:61)
-    at Set.forEach (<anonymous>)
-  144 | ...Card number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: '' })} />
-  145 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-> 146 | ...Card number={2} title={t('steps.2')} desc={t('photoDesc')} />
-      |                                               ^
-  147 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-  148 | ...Card number={3} title={t('steps.3')} desc={t('audioDesc')} />
-  149 | ... (src/app/page.tsx:146:61)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.steps.3` in messages for locale `zh`.
-    at Home (src/app/page.tsx:148:41)
-    at Set.forEach (<anonymous>)
-  146 |             <StepCard number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  147 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-> 148 |             <StepCard number={3} title={t('steps.3')} desc={t('audioDesc')} />
-      |                                         ^
-  149 |           </div>
-  150 |         </div>
-  151 | (src/app/page.tsx:148:41)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.audioDesc` in messages for locale `zh`.
-    at Home (src/app/page.tsx:148:61)
-    at Set.forEach (<anonymous>)
-  146 | ...Card number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  147 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-> 148 | ...Card number={3} title={t('steps.3')} desc={t('audioDesc')} />
-      |                                               ^
-  149 | ...
-  150 | ...
-  151 | ... (src/app/page.tsx:148:61)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.steps.1` in messages for locale `zh`.
-    at Home (src/app/page.tsx:144:41)
-    at Set.forEach (<anonymous>)
-  142 |         <div className="text-center space-y-8 mb-16 w-full">
-  143 |           <div className="flex flex-col md:flex-row gap-6 items-center justify-center">
-> 144 |             <StepCard number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: ''...
-      |                                         ^
-  145 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-  146 |             <StepCard number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  147 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md... (src/app/page.tsx:144:41)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.keywordsLabel` in messages for locale `zh`.
-    at Home (src/app/page.tsx:144:61)
-    at Set.forEach (<anonymous>)
-  142 | ...sName="text-center space-y-8 mb-16 w-full">
-  143 | ...assName="flex flex-col md:flex-row gap-6 items-center justify-center">
-> 144 | ...Card number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: '' })} />
-      |                                               ^
-  145 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-  146 | ...Card number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  147 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" /> (src/app/page.tsx:144:61)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.steps.2` in messages for locale `zh`.
-    at Home (src/app/page.tsx:146:41)
-    at Set.forEach (<anonymous>)
-  144 |             <StepCard number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: ''...
-  145 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-> 146 |             <StepCard number={2} title={t('steps.2')} desc={t('photoDesc')} />
-      |                                         ^
-  147 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-  148 |             <StepCard number={3} title={t('steps.3')} desc={t('audioDesc')} />
-  149 |           </div> (src/app/page.tsx:146:41)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.photoDesc` in messages for locale `zh`.
-    at Home (src/app/page.tsx:146:61)
-    at Set.forEach (<anonymous>)
-  144 | ...Card number={1} title={t('steps.1')} desc={t('keywordsLabel', { name: '' })} />
-  145 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-> 146 | ...Card number={2} title={t('steps.2')} desc={t('photoDesc')} />
-      |                                               ^
-  147 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-  148 | ...Card number={3} title={t('steps.3')} desc={t('audioDesc')} />
-  149 | ... (src/app/page.tsx:146:61)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.steps.3` in messages for locale `zh`.
-    at Home (src/app/page.tsx:148:41)
-    at Set.forEach (<anonymous>)
-  146 |             <StepCard number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  147 |             <ArrowRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md...
-> 148 |             <StepCard number={3} title={t('steps.3')} desc={t('audioDesc')} />
-      |                                         ^
-  149 |           </div>
-  150 |         </div>
-  151 | (src/app/page.tsx:148:41)
-[browser] Error: MISSING_MESSAGE: Could not resolve `home.audioDesc` in messages for locale `zh`.
-    at Home (src/app/page.tsx:148:61)
-    at Set.forEach (<anonymous>)
-  146 | ...Card number={2} title={t('steps.2')} desc={t('photoDesc')} />
-  147 | ...wRight className="w-4 h-4 text-stone-300 rotate-90 md:rotate-0 hidden md:block" />
-> 148 | ...Card number={3} title={t('steps.3')} desc={t('audioDesc')} />
-      |                                               ^
-  149 | ...
-  150 | ...
-  151 | ... (src/app/page.tsx:148:61)
- GET / 200 in 30ms (next.js: 4ms, proxy.ts: 3ms, application-code: 24ms)
- GET / 200 in 34ms (next.js: 3ms, proxy.ts: 4ms, application-code: 26ms)
-✓ Compiled in 341ms
- GET / 200 in 527ms (next.js: 175ms, proxy.ts: 136ms, application-code: 217ms)
- GET / 200 in 223ms (next.js: 35ms, proxy.ts: 22ms, application-code: 166ms)
- GET / 200 in 169ms (next.js: 13ms, proxy.ts: 7ms, application-code: 149ms)
- GET / 200 in 168ms (next.js: 44ms, proxy.ts: 9ms, application-code: 115ms)
- GET / 200 in 170ms (next.js: 29ms, proxy.ts: 8ms, application-code: 133ms)
- GET / 200 in 191ms (next.js: 18ms, proxy.ts: 13ms, application-code: 160ms)
- GET / 200 in 194ms (next.js: 10ms, proxy.ts: 31ms, application-code: 153ms)
- GET / 200 in 167ms (next.js: 8ms, proxy.ts: 5ms, application-code: 153ms)
- GET / 200 in 167ms (next.js: 50ms, proxy.ts: 9ms, application-code: 108ms)
- GET / 200 in 171ms (next.js: 12ms, proxy.ts: 8ms, application-code: 152ms)
- GET / 200 in 171ms (next.js: 30ms, proxy.ts: 8ms, application-code: 133ms)
- GET / 200 in 189ms (next.js: 10ms, proxy.ts: 9ms, application-code: 170ms)
- GET / 200 in 184ms (next.js: 9ms, proxy.ts: 23ms, application-code: 152ms)
- GET / 200 in 168ms (next.js: 14ms, proxy.ts: 5ms, application-code: 148ms)
- GET / 200 in 166ms (next.js: 16ms, proxy.ts: 4ms, application-code: 147ms)
- GET / 200 in 182ms (next.js: 28ms, proxy.ts: 6ms, application-code: 148ms)
- GET / 200 in 182ms (next.js: 46ms, proxy.ts: 7ms, application-code: 129ms)
- GET / 200 in 183ms (next.js: 8ms, proxy.ts: 4ms, application-code: 171ms)
- GET / 200 in 187ms (next.js: 9ms, proxy.ts: 24ms, application-code: 155ms)
- GET / 200 in 168ms (next.js: 14ms, proxy.ts: 6ms, application-code: 149ms)
- GET / 200 in 177ms (next.js: 16ms, proxy.ts: 7ms, application-code: 154ms)
- GET / 200 in 191ms (next.js: 28ms, proxy.ts: 6ms, application-code: 157ms)
- GET / 200 in 190ms (next.js: 45ms, proxy.ts: 7ms, application-code: 139ms)
- GET / 200 in 194ms (next.js: 11ms, proxy.ts: 4ms, application-code: 178ms)
- GET / 200 in 192ms (next.js: 30ms, proxy.ts: 5ms, application-code: 156ms)
- GET / 200 in 186ms (next.js: 14ms, proxy.ts: 28ms, application-code: 144ms)
- GET / 200 in 158ms (next.js: 15ms, proxy.ts: 5ms, application-code: 138ms)
- GET / 200 in 182ms (next.js: 46ms, proxy.ts: 8ms, application-code: 128ms)
- GET / 200 in 184ms (next.js: 28ms, proxy.ts: 7ms, application-code: 149ms)
- GET / 200 in 182ms (next.js: 9ms, proxy.ts: 3ms, application-code: 169ms)
- GET / 200 in 179ms (next.js: 29ms, proxy.ts: 4ms, application-code: 145ms)
- GET / 200 in 160ms (next.js: 12ms, proxy.ts: 24ms, application-code: 124ms)
- GET / 200 in 181ms (next.js: 15ms, proxy.ts: 32ms, application-code: 135ms)
- GET / 200 in 153ms (next.js: 28ms, proxy.ts: 4ms, application-code: 121ms)
- GET / 200 in 175ms (next.js: 45ms, proxy.ts: 8ms, application-code: 123ms)
- GET / 200 in 188ms (next.js: 10ms, proxy.ts: 5ms, application-code: 172ms)
- GET / 200 in 182ms (next.js: 30ms, proxy.ts: 3ms, application-code: 148ms)
- GET / 200 in 163ms (next.js: 14ms, proxy.ts: 23ms, application-code: 126ms)
- GET / 200 in 186ms (next.js: 17ms, proxy.ts: 24ms, application-code: 146ms)
- GET / 200 in 164ms (next.js: 30ms, proxy.ts: 5ms, application-code: 128ms)
- GET / 200 in 185ms (next.js: 47ms, proxy.ts: 6ms, application-code: 132ms)
- GET / 200 in 195ms (next.js: 10ms, proxy.ts: 4ms, application-code: 182ms)
- GET / 200 in 193ms (next.js: 28ms, proxy.ts: 4ms, application-code: 161ms)
- GET / 200 in 192ms (next.js: 14ms, proxy.ts: 25ms, application-code: 153ms)
- GET / 200 in 190ms (next.js: 16ms, proxy.ts: 24ms, application-code: 151ms)
- GET / 200 in 171ms (next.js: 41ms, proxy.ts: 6ms, application-code: 123ms)
- GET / 200 in 189ms (next.js: 40ms, proxy.ts: 26ms, application-code: 123ms)
- GET / 200 in 172ms (next.js: 7ms, proxy.ts: 4ms, application-code: 161ms)
- GET / 200 in 172ms (next.js: 28ms, proxy.ts: 3ms, application-code: 140ms)
- GET / 200 in 155ms (next.js: 15ms, proxy.ts: 25ms, application-code: 116ms)
- GET / 200 in 171ms (next.js: 31ms, proxy.ts: 4ms, application-code: 135ms)
- GET / 200 in 175ms (next.js: 30ms, proxy.ts: 22ms, application-code: 123ms)
- GET / 200 in 170ms (next.js: 32ms, proxy.ts: 22ms, application-code: 116ms)
- GET / 200 in 181ms (next.js: 8ms, proxy.ts: 8ms, application-code: 165ms)
- GET / 200 in 177ms (next.js: 29ms, proxy.ts: 3ms, application-code: 145ms)
- GET / 200 in 156ms (next.js: 33ms, proxy.ts: 4ms, application-code: 119ms)
- GET / 200 in 173ms (next.js: 32ms, proxy.ts: 6ms, application-code: 135ms)
- GET / 200 in 152ms (next.js: 29ms, proxy.ts: 6ms, application-code: 118ms)
- GET / 200 in 168ms (next.js: 37ms, proxy.ts: 22ms, application-code: 109ms)
- GET / 200 in 165ms (next.js: 8ms, proxy.ts: 3ms, application-code: 154ms)
- GET / 200 in 165ms (next.js: 27ms, proxy.ts: 3ms, application-code: 135ms)
- GET / 200 in 144ms (next.js: 32ms, proxy.ts: 5ms, application-code: 108ms)
- GET / 200 in 139ms (next.js: 30ms, proxy.ts: 6ms, application-code: 103ms)
- GET / 200 in 115ms (next.js: 29ms, proxy.ts: 5ms, application-code: 80ms)
- GET / 200 in 108ms (next.js: 27ms, proxy.ts: 23ms, application-code: 58ms)
- GET / 200 in 34ms (next.js: 6ms, proxy.ts: 3ms, application-code: 25ms)
-✓ Compiled in 271ms
- GET / 200 in 622ms (next.js: 253ms, proxy.ts: 63ms, application-code: 306ms)
- GET / 200 in 264ms (next.js: 51ms, proxy.ts: 28ms, application-code: 185ms)
- GET / 200 in 215ms (next.js: 37ms, proxy.ts: 14ms, application-code: 164ms)
- GET / 200 in 218ms (next.js: 18ms, proxy.ts: 13ms, application-code: 187ms)
- GET / 200 in 215ms (next.js: 59ms, proxy.ts: 16ms, application-code: 141ms)
- GET / 200 in 215ms (next.js: 80ms, proxy.ts: 17ms, application-code: 117ms)
- GET / 200 in 219ms (next.js: 6ms, proxy.ts: 3ms, application-code: 210ms)
- GET / 200 in 199ms (next.js: 10ms, proxy.ts: 6ms, application-code: 184ms)
- GET / 200 in 191ms (next.js: 62ms, proxy.ts: 11ms, application-code: 117ms)
- GET / 200 in 195ms (next.js: 21ms, proxy.ts: 9ms, application-code: 166ms)
- GET / 200 in 195ms (next.js: 39ms, proxy.ts: 10ms, application-code: 146ms)
- GET / 200 in 235ms (next.js: 78ms, proxy.ts: 17ms, application-code: 140ms)
- GET / 200 in 227ms (next.js: 7ms, proxy.ts: 4ms, application-code: 216ms)
- GET / 200 in 204ms (next.js: 14ms, proxy.ts: 8ms, application-code: 182ms)
- GET / 200 in 198ms (next.js: 19ms, proxy.ts: 15ms, application-code: 164ms)
- GET / 200 in 197ms (next.js: 36ms, proxy.ts: 17ms, application-code: 144ms)
- GET / 200 in 222ms (next.js: 60ms, proxy.ts: 18ms, application-code: 143ms)
- GET / 200 in 208ms (next.js: 85ms, proxy.ts: 6ms, application-code: 116ms)
- GET / 200 in 231ms (next.js: 12ms, proxy.ts: 5ms, application-code: 214ms)
- GET / 200 in 231ms (next.js: 36ms, proxy.ts: 4ms, application-code: 190ms)
- GET / 200 in 232ms (next.js: 25ms, proxy.ts: 10ms, application-code: 196ms)
- GET / 200 in 231ms (next.js: 41ms, proxy.ts: 12ms, application-code: 179ms)
- GET / 200 in 258ms (next.js: 65ms, proxy.ts: 14ms, application-code: 180ms)
- GET / 200 in 260ms (next.js: 81ms, proxy.ts: 12ms, application-code: 166ms)
- GET / 200 in 227ms (next.js: 11ms, proxy.ts: 6ms, application-code: 210ms)
- GET / 200 in 223ms (next.js: 62ms, proxy.ts: 4ms, application-code: 157ms)
- GET / 200 in 158ms (next.js: 36ms, proxy.ts: 10ms, application-code: 112ms)
- GET / 200 in 160ms (next.js: 18ms, proxy.ts: 9ms, application-code: 134ms)
- GET / 200 in 173ms (next.js: 54ms, proxy.ts: 6ms, application-code: 113ms)
- GET / 200 in 184ms (next.js: 33ms, proxy.ts: 45ms, application-code: 107ms)
- GET / 200 in 181ms (next.js: 9ms, proxy.ts: 4ms, application-code: 168ms)
- GET / 200 in 180ms (next.js: 29ms, proxy.ts: 4ms, application-code: 147ms)
- GET / 200 in 158ms (next.js: 20ms, proxy.ts: 26ms, application-code: 112ms)
- GET / 200 in 177ms (next.js: 37ms, proxy.ts: 27ms, application-code: 112ms)
- GET / 200 in 154ms (next.js: 58ms, proxy.ts: 5ms, application-code: 90ms)
- GET / 200 in 135ms (next.js: 31ms, proxy.ts: 7ms, application-code: 97ms)
- GET / 200 in 187ms (next.js: 10ms, proxy.ts: 3ms, application-code: 173ms)
- GET / 200 in 186ms (next.js: 37ms, proxy.ts: 5ms, application-code: 145ms)
- GET / 200 in 159ms (next.js: 50ms, proxy.ts: 7ms, application-code: 101ms)
- GET / 200 in 163ms (next.js: 36ms, proxy.ts: 7ms, application-code: 120ms)
- GET / 200 in 158ms (next.js: 60ms, proxy.ts: 7ms, application-code: 92ms)
- GET / 200 in 185ms (next.js: 14ms, proxy.ts: 33ms, application-code: 138ms)
- GET / 200 in 179ms (next.js: 12ms, proxy.ts: 3ms, application-code: 164ms)
- GET / 200 in 177ms (next.js: 37ms, proxy.ts: 6ms, application-code: 134ms)
- GET / 200 in 175ms (next.js: 36ms, proxy.ts: 25ms, application-code: 115ms)
- GET / 200 in 157ms (next.js: 51ms, proxy.ts: 8ms, application-code: 98ms)
- GET / 200 in 179ms (next.js: 54ms, proxy.ts: 26ms, application-code: 99ms)
- GET / 200 in 179ms (next.js: 8ms, proxy.ts: 27ms, application-code: 145ms)
- GET / 200 in 191ms (next.js: 19ms, proxy.ts: 4ms, application-code: 169ms)
- GET / 200 in 192ms (next.js: 34ms, proxy.ts: 5ms, application-code: 153ms)
- GET / 200 in 187ms (next.js: 74ms, proxy.ts: 7ms, application-code: 106ms)
- GET / 200 in 190ms (next.js: 59ms, proxy.ts: 7ms, application-code: 124ms)
- GET / 200 in 160ms (next.js: 58ms, proxy.ts: 9ms, application-code: 93ms)
- GET / 200 in 178ms (next.js: 28ms, proxy.ts: 7ms, application-code: 143ms)
- GET / 200 in 171ms (next.js: 10ms, proxy.ts: 4ms, application-code: 158ms)
- GET / 200 in 169ms (next.js: 35ms, proxy.ts: 5ms, application-code: 129ms)
- GET / 200 in 150ms (next.js: 33ms, proxy.ts: 7ms, application-code: 110ms)
- GET / 200 in 153ms (next.js: 49ms, proxy.ts: 7ms, application-code: 97ms)
- GET / 200 in 145ms (next.js: 53ms, proxy.ts: 24ms, application-code: 69ms)
- GET / 200 in 173ms (next.js: 7ms, proxy.ts: 27ms, application-code: 140ms)
- GET / 200 in 179ms (next.js: 14ms, proxy.ts: 4ms, application-code: 161ms)
- GET / 200 in 180ms (next.js: 39ms, proxy.ts: 4ms, application-code: 136ms)
- GET / 200 in 174ms (next.js: 56ms, proxy.ts: 4ms, application-code: 115ms)
- GET / 200 in 154ms (next.js: 52ms, proxy.ts: 6ms, application-code: 96ms)
- GET / 200 in 151ms (next.js: 71ms, proxy.ts: 5ms, application-code: 75ms)
- GET / 200 in 116ms (next.js: 7ms, proxy.ts: 7ms, application-code: 102ms)
- GET / 200 in 80ms (next.js: 11ms, proxy.ts: 4ms, application-code: 64ms)
- GET / 200 in 75ms (next.js: 42ms, proxy.ts: 5ms, application-code: 27ms)
- GET / 200 in 165ms (next.js: 51ms, proxy.ts: 5ms, application-code: 109ms)
- GET / 200 in 83ms (next.js: 7ms, proxy.ts: 8ms, application-code: 68ms)
- GET / 200 in 41ms (next.js: 6ms, proxy.ts: 5ms, application-code: 29ms)
- GET /auth/login?redirect=%2Fcreate 200 in 560ms (next.js: 525ms, proxy.ts: 4ms, application-code: 31ms)
- GET /auth/register 200 in 465ms (next.js: 436ms, proxy.ts: 3ms, application-code: 26ms)
- GET / 200 in 173ms (next.js: 4ms, proxy.ts: 3ms, application-code: 166ms)
- GET / 200 in 71ms (next.js: 5ms, proxy.ts: 5ms, application-code: 62ms)
- GET /pricing 200 in 257ms (next.js: 57ms, proxy.ts: 3ms, application-code: 196ms)
- GET /auth/login 200 in 127ms (next.js: 30ms, proxy.ts: 6ms, application-code: 92ms)
- GET /auth/register 200 in 94ms (next.js: 36ms, proxy.ts: 4ms, application-code: 55ms)
- GET /share/demo-avatar 200 in 258ms (next.js: 96ms, proxy.ts: 5ms, application-code: 157ms)
- GET /api/share/demo-avatar 404 in 1744ms (next.js: 1409ms, proxy.ts: 5ms, application-code: 330ms)
+ GET / 500 in 125ms (next.js: 97ms, application-code: 28ms)
+[browser] Uncaught Error: Cannot find module '../chunks/ssr/[turbopack]_runtime.js'
+Require stack:
+- D:\opencode\digital-avatar\demo\.next\dev\server\pages\_document.js
+- D:\opencode\digital-avatar\demo\node_modules\next\dist\server\require.js
+- D:\opencode\digital-avatar\demo\node_modules\next\dist\server\load-components.js
+- D:\opencode\digital-avatar\demo\node_modules\next\dist\build\utils.js
+- D:\opencode\digital-avatar\demo\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\opencode\digital-avatar\demo\node_modules\next\dist\server\lib\router-server.js
+- D:\opencode\digital-avatar\demo\node_modules\next\dist\server\lib\start-server.js
+    at Object.<anonymous> (.next\dev\server\pages\_document.js:1:7)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+Compaction failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+[browser] Uncaught Error: Cannot find module '../chunks/ssr/[turbopack]_runtime.js'
+Require stack:
+- D:\opencode\digital-avatar\demo\.next\dev\server\pages\_document.js
+- D:\opencode\digital-avatar\demo\node_modules\next\dist\server\require.js
+- D:\opencode\digital-avatar\demo\node_modules\next\dist\server\load-components.js
+- D:\opencode\digital-avatar\demo\node_modules\next\dist\build\utils.js
+- D:\opencode\digital-avatar\demo\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\opencode\digital-avatar\demo\node_modules\next\dist\server\lib\router-server.js
+- D:\opencode\digital-avatar\demo\node_modules\next\dist\server\lib\start-server.js
+    at Object.<anonymous> (.next\dev\server\pages\_document.js:1:7)

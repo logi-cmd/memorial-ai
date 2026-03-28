@@ -37,13 +37,13 @@ It's not about replacing anyone. It's about keeping their memory close.
 ## Screenshots
 
 ### Homepage
-![Homepage with hero section, feature cards, and step-by-step guide](docs/images/dashboard.png "Memorial AI Homepage")
+![Memorial AI homepage with hero section and features](docs/images/homepage.png "Memorial AI Homepage")
 
 ### Settings
-![Settings page for configuring LLM, embedding, and TTS providers](docs/images/settings.png "Settings page")
+![Settings page to configure LLM, embedding, and TTS providers](docs/images/settings.png "Settings")
 
 ### Share Avatar
-![Public share page to showcase a digital avatar](docs/images/share.png "Share avatar card")
+![Public share page for digital avatar](docs/images/share.png "Share Avatar")
 
 ---
 
