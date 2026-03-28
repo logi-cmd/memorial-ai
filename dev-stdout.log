@@ -5,3 +5,50 @@
 ✓ Ready in 662ms
 ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
 
+Error: MISSING_MESSAGE: Could not resolve `common.settings` in messages for locale `zh`.
+    at Home (src\app\page.tsx:24:20)
+  22 |             href="/settings"
+  23 |             className="p-2 text-stone-400 hover:text-violet-600 transition-colors"
+> 24 |             title={tc('settings') || '设置'}
+     |                    ^
+  25 |           >
+  26 |             <Settings className="w-5 h-5" />
+  27 |           </Link> {
+  code: 'MISSING_MESSAGE',
+  originalMessage: 'Could not resolve `common.settings` in messages for locale `zh`.'
+}
+ GET / 200 in 2.8s (next.js: 2.5s, application-code: 307ms)
+Error: MISSING_MESSAGE: Could not resolve `common.settings` in messages for locale `zh`.
+    at Home (src\app\page.tsx:24:20)
+  22 |             href="/settings"
+  23 |             className="p-2 text-stone-400 hover:text-violet-600 transition-colors"
+> 24 |             title={tc('settings') || '设置'}
+     |                    ^
+  25 |           >
+  26 |             <Settings className="w-5 h-5" />
+  27 |           </Link> {
+  code: 'MISSING_MESSAGE',
+  originalMessage: 'Could not resolve `common.settings` in messages for locale `zh`.'
+}
+ GET / 200 in 84ms (next.js: 4ms, application-code: 80ms)
+[browser] Error: MISSING_MESSAGE: Could not resolve `common.settings` in messages for locale `zh`.
+    at Home (src/app/page.tsx:24:20)
+  22 |             href="/settings"
+  23 |             className="p-2 text-stone-400 hover:text-violet-600 transition-colors"
+> 24 |             title={tc('settings') || '设置'}
+     |                    ^
+  25 |           >
+  26 |             <Settings className="w-5 h-5" />
+  27 |           </Link> (src/app/page.tsx:24:20)
+[browser] Error: MISSING_MESSAGE: Could not resolve `common.settings` in messages for locale `zh`.
+    at Home (src/app/page.tsx:24:20)
+  22 |             href="/settings"
+  23 |             className="p-2 text-stone-400 hover:text-violet-600 transition-colors"
+> 24 |             title={tc('settings') || '设置'}
+     |                    ^
+  25 |           >
+  26 |             <Settings className="w-5 h-5" />
+  27 |           </Link> (src/app/page.tsx:24:20)
+ GET /settings 200 in 450ms (next.js: 385ms, application-code: 65ms)
+ GET /share/demo-avatar 200 in 869ms (next.js: 805ms, application-code: 64ms)
+ GET /api/share/demo-avatar 404 in 996ms (next.js: 889ms, proxy.ts: 57ms, application-code: 50ms)
