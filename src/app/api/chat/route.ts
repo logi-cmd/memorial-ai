@@ -1,6 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
-import { createSupabaseServerClient } from '@/lib/supabase-server';
+import {
+  getAvatarById,
+  getMemories,
+  createMemory,
+  createConversation,
+  getMessages,
+  addMessage,
+  getConversations,
+  createProactiveMessage,
+} from '@/lib/db';
+import { getAppConfig } from '@/lib/providers/config';
+import { getLLMProvider, getEmbeddingProvider } from '@/lib/providers';
 import {
   streamChat,
   selectModel,
@@ -11,36 +21,98 @@ import {
 } from '@/lib/claude';
 import type { CharacterCard, StyleProfile, ConversationSummaryData } from '@/lib/claude';
 import { generateEmbedding } from '@/lib/embedding';
-import type { EmotionTurn } from '@/lib/supabase';
 import { evolveCharacterCard, applyEvolutionPatch } from '@/lib/evolution';
 import { shouldGenerateProactive, generateProactiveMessage } from '@/lib/proactive';
 import { containsSensitiveContent, checkRateLimit, addAIIdentifier } from '@/lib/content-safety';
 
 interface ChatRequestBody {
   avatarId: string;
-  userId: string;
   message: string;
   conversationId?: string;
 }
 
-// POST /api/chat - 对话接口（流式返回）
+function cosineSimilarity(a: number[], b: number[]): number {
+  if (a.length !== b.length) return 0;
+  let dot = 0, na = 0, nb = 0;
+  for (let i = 0; i < a.length; i++) {
+    dot += a[i] * b[i];
+    na += a[i] * a[i];
+    nb += b[i] * b[i];
+  }
+  const denom = Math.sqrt(na) * Math.sqrt(nb);
+  return denom === 0 ? 0 : dot / denom;
+}
+
+async function getRelevantMemories(avatarId: string, queryEmbedding: number[], limit = 7) {
+  const allMemories = getMemories(avatarId) as any[];
+  const scored = allMemories
+    .filter((m) => m.embedding)
+    .map((m) => ({
+      ...m,
+      similarity: cosineSimilarity(queryEmbedding, m.embedding),
+    }))
+    .filter((m) => m.similarity > 0.3)
+    .sort((a, b) => b.similarity * (b.importance || 1) - a.similarity * (a.importance || 1));
+  return scored.slice(0, limit);
+}
+
+async function ollamaStreamChatWrapper(
+  messages: Array<{ role: string; content: string }>,
+  systemPrompt: string
+) {
+  const config = getAppConfig();
+  const llmMod = getLLMProvider(config);
+  const response = await llmMod.ollamaStreamChat(messages, systemPrompt);
+
+  const reader = response.body?.getReader();
+  const decoder = new TextDecoder();
+  let buffer = '';
+
+  const emitter = {
+    _textCallbacks: [] as Array<(text: string) => void>,
+    _done: false,
+    _fullText: '',
+    on(event: string, cb: (text: string) => void) {
+      if (event === 'text') this._textCallbacks.push(cb);
+    },
+    async finalMessage() {
+      while (!this._done) {
+        await this._pump();
+      }
+      return { content: [{ type: 'text', text: this._fullText }] };
+    },
+    async _pump() {
+      if (!reader) { this._done = true; return; }
+      const { value, done } = await reader.read();
+      if (done) { this._done = true; return; }
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split('\n');
+      buffer = lines.pop() || '';
+      for (const line of lines) {
+        if (!line.trim()) continue;
+        try {
+          const data = JSON.parse(line);
+          if (data.message?.content) {
+            this._fullText += data.message.content;
+            for (const cb of this._textCallbacks) cb(data.message.content);
+          }
+          if (data.done) this._done = true;
+        } catch {}
+      }
+    },
+  };
+
+  return emitter;
+}
+
 export async function POST(request: NextRequest) {
   try {
-    const { avatarId, userId, message, conversationId } = (await request.json()) as ChatRequestBody;
+    const { avatarId, message, conversationId } = (await request.json()) as ChatRequestBody;
 
     if (!avatarId || !message) {
       return NextResponse.json({ error: '缺少必要参数' }, { status: 400 });
     }
 
-    // 通过 SSR client 验证用户身份
-    const serverSupabase = await createSupabaseServerClient();
-    const { data: { user } } = await serverSupabase.auth.getUser();
-    const authenticatedUserId = user?.id;
-    if (!authenticatedUserId) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
-
-    // Content safety check
     const safety = containsSensitiveContent(message);
     if (safety.isSensitive) {
       return NextResponse.json(
@@ -49,8 +121,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Rate limiting
-    const rateLimit = checkRateLimit(authenticatedUserId);
+    const rateLimit = checkRateLimit('local-user');
     if (rateLimit.limited) {
       return NextResponse.json(
         { error: '请求过于频繁，请稍后再试' },
@@ -61,51 +132,35 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // 1. 获取分身信息
-    const { data: avatar, error: avatarError } = await supabase
-      .from('avatars')
-      .select('*')
-      .eq('id', avatarId)
-      .single();
-
-    if (avatarError || !avatar) {
+    const avatar = getAvatarById(avatarId) as any;
+    if (!avatar) {
       return NextResponse.json({ error: '分身不存在' }, { status: 404 });
     }
 
-    // 2. 检索相关记忆（加权 RAG）
-    const queryEmbedding = await generateEmbedding(message);
-    const { data: relevantMemories } = await supabase.rpc('match_memories_weighted', {
-      query_embedding: queryEmbedding,
-      target_avatar_id: avatarId,
-      match_threshold: 0.55,
-      match_count: 7,
-    });
+    const config = getAppConfig();
+    const embeddingMod = getEmbeddingProvider(config);
+    const embedFn = config.embedding.provider === 'local'
+      ? embeddingMod.localGenerateEmbedding
+      : generateEmbedding;
 
-    // 将记忆按类型分组
-    const importantMemories = (relevantMemories || [])
-      .filter((m: Record<string, unknown>) => m.memory_type === 'core_identity')
-      .map((m: Record<string, unknown>) => ({ content: m.content as string, id: m.id as string }));
-    const relatedMemories = (relevantMemories || [])
-      .filter((m: Record<string, unknown>) => m.memory_type !== 'core_identity')
-      .map((m: Record<string, unknown>) => ({ content: m.content as string, id: m.id as string }));
+    const queryEmbedding = await embedFn(message);
+    const relevantMemories = await getRelevantMemories(avatarId, queryEmbedding);
 
-    // 异步更新被检索记忆的 access_count
-    for (const m of relevantMemories || []) {
-      supabase.rpc('increment_memory_access', { memory_id: (m as Record<string, unknown>).id }).then(() => {});
-    }
+    const importantMemories = relevantMemories
+      .filter((m: any) => m.type === 'core_identity')
+      .map((m: any) => ({ content: m.content, id: m.id }));
+    const relatedMemories = relevantMemories
+      .filter((m: any) => m.type !== 'core_identity')
+      .map((m: any) => ({ content: m.content, id: m.id }));
 
-    // 3. 构建增强型 System Prompt
     const styleProfile = avatar.profile as StyleProfile | null;
     const characterCard = avatar.character_card as CharacterCard | null;
     let enhancedPrompt: string;
 
     if (characterCard) {
-      // P1 新格式：从结构化 CharacterCard 渲染
       enhancedPrompt = renderCharacterPrompt(characterCard, styleProfile ?? undefined);
     } else {
-      // 旧格式兼容：system_prompt + 风格注入
-      enhancedPrompt = avatar.system_prompt || `你是${avatar.name}，${avatar.relationship}。`;
-
+      enhancedPrompt = `你是${avatar.name}，${avatar.relationship}。`;
       if (styleProfile?.example_exchanges?.length) {
         const styleSection = styleProfile.example_exchanges
           .slice(0, 5)
@@ -116,11 +171,9 @@ export async function POST(request: NextRequest) {
           enhancedPrompt += `\n常用口头禅/语气词：${styleProfile.catchphrases.join('、')}`;
         }
       }
-
       enhancedPrompt += '\n\n注意：如果用户提到你不记得的事情，诚实地说"这个我不太确定了，可能是你记错了"。不要编造记忆。';
     }
 
-    // 注入记忆
     if (importantMemories.length > 0) {
       enhancedPrompt += `\n\n## 核心身份记忆\n${importantMemories.map((m: { content: string }) => `- ${m.content}`).join('\n')}`;
     }
@@ -128,49 +181,20 @@ export async function POST(request: NextRequest) {
       enhancedPrompt += `\n\n## 相关记忆\n${relatedMemories.map((m: { content: string }) => `- ${m.content}`).join('\n')}`;
     }
 
-    // 4. 获取或创建对话（完整消息 + 摘要）
     let convId = conversationId;
     let allMessages: { role: string; content: string }[] = [];
-    let lastSummary: ConversationSummaryData | null = null;
-    let lastSummaryTurn = 0;
-    let emotionTrajectory: EmotionTurn[] = [];
 
     if (convId) {
-      const { data: conversation } = await supabase
-        .from('conversations')
-        .select('messages, summary, last_summary_turn, turn_count, emotion_trajectory')
-        .eq('id', convId)
-        .single();
-      if (conversation) {
-        allMessages = conversation.messages || [];
-        lastSummary = conversation.summary as ConversationSummaryData | null;
-        lastSummaryTurn = conversation.last_summary_turn || 0;
-        emotionTrajectory = (conversation.emotion_trajectory as EmotionTurn[]) || [];
-      }
+      const msgs = getMessages(convId) as any[];
+      allMessages = msgs.map((m: any) => ({ role: m.role, content: m.content }));
     } else {
-      const { data: newConv } = await supabase
-        .from('conversations')
-        .insert({
-          avatar_id: avatarId,
-          user_id: authenticatedUserId,
-          turn_count: 0,
-          last_summary_turn: 0,
-          emotion_trajectory: [],
-        })
-        .select()
-        .single();
+      const newConv = createConversation(avatarId) as any;
       convId = newConv?.id;
     }
 
-    // 5. 构建 LLM 消息上下文（摘要 + 最近消息）
     const recentMessages = allMessages.slice(-10);
-    const summaryContext = lastSummary
-      ? `\n\n## 对话历史摘要\n${lastSummary.summary_text}\n此前讨论过的话题：${lastSummary.topics.join('、')}\n已知的关于${avatar.name}的信息：${lastSummary.new_info.join('；')}`
-      : '';
+    const llmSystemPrompt = enhancedPrompt;
 
-    const llmSystemPrompt = enhancedPrompt + summaryContext;
-
-    // 每 5 轮注入人格锚定
     let userMessages: { role: 'user' | 'assistant'; content: string }[] = [
       ...recentMessages.map((m) => ({ role: m.role as 'user' | 'assistant', content: m.content })),
       { role: 'user', content: message },
@@ -178,163 +202,55 @@ export async function POST(request: NextRequest) {
 
     const currentTurn = Math.floor(allMessages.length / 2) + 1;
     if (currentTurn > 0 && currentTurn % 5 === 0) {
-      const coreValues = characterCard?.core_identity?.core_values?.join('、')
-        || (avatar.system_prompt ? '' : '温柔、善良');
+      const coreValues = characterCard?.core_identity?.core_values?.join('、') || '温柔、善良';
       const anchor = `【系统提醒】你现在是${avatar.name}。记住你的核心特质：${coreValues}。保持你的说话风格，像你平时那样说话。`;
       userMessages.splice(-2, 0, { role: 'user' as const, content: anchor });
       userMessages.splice(-1, 0, { role: 'assistant' as const, content: `好的，我记住了。我会继续做${avatar.name}。` });
     }
 
-    // 6. 流式对话
-    const stream = await streamChat({
-      systemPrompt: llmSystemPrompt,
-      messages: userMessages,
-      model: selectModel(),
-    });
+    let stream;
+    if (config.mode === 'local') {
+      stream = await ollamaStreamChatWrapper(userMessages, llmSystemPrompt);
+    } else {
+      stream = await streamChat({
+        systemPrompt: llmSystemPrompt,
+        messages: userMessages,
+        model: selectModel(),
+      });
+    }
 
-    // 7. 异步情感分析（不阻塞流式启动）
-    const emotionPromise = analyzeEmotion(message, allMessages.slice(-4));
+    const emotionPromise = config.mode === 'local'
+      ? Promise.resolve({
+          primary_emotion: 'neutral' as const,
+          intensity: 0.1,
+          suggested_tone: '自然',
+          tts_stability: 0.6,
+          is_deep_emotional: false,
+        })
+      : analyzeEmotion(message, allMessages.slice(-4));
 
-    // 8. 创建流式响应
     const encoder = new TextEncoder();
     const readable = new ReadableStream({
       async start(controller) {
         let fullResponse = '';
 
         try {
-          stream.on('text', (text) => {
+          stream.on('text', (text: string) => {
             fullResponse += text;
             controller.enqueue(encoder.encode(`data: ${JSON.stringify({ text })}\n\n`));
           });
 
           await stream.finalMessage();
 
-          // 9. 获取情感分析结果
           const emotionResult = await emotionPromise;
-
-          // 10. 保存对话记录（全量保留，不再截断）
-          const turnNum = Math.floor(allMessages.length / 2) + 1;
           const taggedResponse = addAIIdentifier(fullResponse);
-          const updatedAllMessages = [
-            ...allMessages,
-            { role: 'user', content: message },
-            { role: 'assistant', content: taggedResponse },
-          ];
 
-          // 追加情感轨迹
-          const newEmotionTurn: EmotionTurn = {
-            turn: turnNum,
-            user_text: message,
-            emotion: emotionResult.primary_emotion,
-            intensity: emotionResult.intensity,
-            timestamp: new Date().toISOString(),
-          };
-          const updatedTrajectory = [...emotionTrajectory, newEmotionTurn];
-
-          // 每 10 轮生成摘要
-          const shouldSummarize = turnNum - lastSummaryTurn >= 10;
-          let newSummary: ConversationSummaryData | null = lastSummary;
-
-          if (shouldSummarize) {
-            const messagesToSummarize = updatedAllMessages.slice(lastSummaryTurn * 2);
-            newSummary = await generateConversationSummary(messagesToSummarize, avatar.name);
-
-            // 将摘要中的新信息存为 autobiographical 记忆
-            if (newSummary && newSummary.new_info.length > 0) {
-              for (const info of newSummary.new_info) {
-                const infoEmbedding = await generateEmbedding(info);
-                const { data: similar } = await supabase.rpc('find_similar_memory', {
-                  check_embedding: infoEmbedding,
-                  target_avatar_id: avatarId,
-                  similarity_threshold: 0.92,
-                });
-                if (!similar || similar.length === 0) {
-                  await supabase.from('memories').insert({
-                    avatar_id: avatarId,
-                    content: info,
-                    source: 'auto_extract',
-                    importance: 6,
-                    confirmed: true,
-                    memory_type: 'autobiographical',
-                    embedding: infoEmbedding,
-                    confidence_score: 0.85,
-                    metadata: { topic: 'conversation_summary' },
-                  });
-                }
-              }
-            }
-
-            // 人格演化检查（在摘要生成后异步执行）
-            if (characterCard && newSummary) {
-              const recentInfo = newSummary.new_info.slice(0, 5);
-              if (recentInfo.length > 0) {
-                const evolutionResult = await evolveCharacterCard(
-                  characterCard as unknown as Record<string, unknown>,
-                  newSummary.summary_text,
-                  recentInfo
-                );
-                if (evolutionResult.should_apply && evolutionResult.patches.length > 0) {
-                  const newCard = applyEvolutionPatch(characterCard as unknown as Record<string, unknown>, evolutionResult.patches);
-                  await supabase.from('avatars').update({
-                    character_card: newCard,
-                    evolution_version: (avatar.evolution_version || 1) + 1,
-                  }).eq('id', avatarId);
-                  await supabase.from('character_card_history').insert({
-                    avatar_id: avatarId,
-                    version: (avatar.evolution_version || 1) + 1,
-                    patches: evolutionResult.patches,
-                    character_card: newCard,
-                    significance: evolutionResult.significance,
-                  });
-                }
-              }
-            }
-
-            // 主动消息检查（在摘要生成后异步执行）
-            if (newSummary && shouldSummarize) {
-              const recentMems = (relevantMemories || []).slice(0, 5).map((m: Record<string, unknown>) => ({
-                content: m.content as string,
-                importance: (m.importance as number) || 5,
-                memory_type: (m.memory_type as string) || 'conversation',
-              }));
-              const proactiveCheck = await shouldGenerateProactive(
-                avatar.name,
-                newSummary.summary_text,
-                recentMems
-              );
-              if (proactiveCheck.should) {
-                const msg = await generateProactiveMessage(
-                  avatar.name,
-                  proactiveCheck.type,
-                  newSummary.summary_text
-                );
-                await supabase.from('proactive_messages').insert({
-                  avatar_id: avatarId,
-                  type: proactiveCheck.type,
-                  title: msg.title,
-                  content: msg.content,
-                });
-              }
-            }
-          }
           if (convId) {
-            await supabase
-              .from('conversations')
-              .update({
-                messages: updatedAllMessages,
-                turn_count: turnNum,
-                last_summary_turn: shouldSummarize ? turnNum : lastSummaryTurn,
-                summary: newSummary,
-                emotion_summary: emotionResult.primary_emotion,
-                emotion_trajectory: updatedTrajectory,
-              })
-              .eq('id', convId);
+            addMessage(convId, 'user', message);
+            addMessage(convId, 'assistant', taggedResponse);
+            extractMemoryInBackground(message, fullResponse, avatarId, avatar.name);
           }
 
-          // 11. 异步提取新记忆（被动教导）
-          extractMemoryInBackground(message, fullResponse, avatarId, avatar.name);
-
-          // 12. 发送情感事件给前端
           controller.enqueue(encoder.encode(`data: ${JSON.stringify({
             type: 'emotion',
             emotion: emotionResult.primary_emotion,
@@ -342,7 +258,6 @@ export async function POST(request: NextRequest) {
             suggested_tone: emotionResult.suggested_tone,
           })}\n\n`));
 
-          // 13. Self-harm check: send crisis resources alongside normal response
           if (safety.isSelfHarm) {
             const isZh = (message.charCodeAt(0) > 0x4E00);
             const crisisMsg = isZh
@@ -379,7 +294,6 @@ export async function POST(request: NextRequest) {
   }
 }
 
-// 异步提取记忆（不阻塞响应）
 async function extractMemoryInBackground(
   userMessage: string,
   avatarResponse: string,
@@ -390,30 +304,32 @@ async function extractMemoryInBackground(
     const memory = await extractMemory(userMessage, avatarResponse, avatarName);
     if (!memory) return;
 
-    // 检查去重
-    const dedupEmbedding = await generateEmbedding(memory.content);
-    const { data: similar } = await supabase.rpc('find_similar_memory', {
-      check_embedding: dedupEmbedding,
-      target_avatar_id: avatarId,
-      similarity_threshold: 0.92,
+    const config = getAppConfig();
+    const embeddingMod = getEmbeddingProvider(config);
+    const embedFn = config.embedding.provider === 'local'
+      ? embeddingMod.localGenerateEmbedding
+      : generateEmbedding;
+
+    const dedupEmbedding = await embedFn(memory.content);
+
+    const existing = getMemories(avatarId) as any[];
+    const isDuplicate = existing.some((m) => {
+      if (!m.embedding) return false;
+      return cosineSimilarity(dedupEmbedding, m.embedding) > 0.92;
     });
 
-    if (similar && similar.length > 0) {
-      console.log(`Memory dedup: skipping, similar to ${similar[0].id}`);
+    if (isDuplicate) {
+      console.log(`Memory dedup: skipping similar memory`);
       return;
     }
 
-    await supabase.from('memories').insert({
+    createMemory({
       avatar_id: avatarId,
       content: memory.content,
       source: 'auto_extract',
+      type: memory.memory_type || 'conversation',
       importance: Math.round(memory.confidence * 10),
-      confirmed: false,
-      confidence_score: memory.confidence,
-      memory_type: memory.memory_type,
-      emotion_type: memory.emotion_type,
       embedding: dedupEmbedding,
-      metadata: { topic: memory.topic, confidence: memory.confidence },
     });
   } catch (err) {
     console.error('Memory extraction error:', err);

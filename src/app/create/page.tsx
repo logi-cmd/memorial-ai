@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { User, Image, Mic, ArrowRight, ArrowLeft, Loader2, MessageSquare, ClipboardList } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { createSupabaseBrowserClient } from '@/lib/supabase-browser';
 import PersonalityQuestionnaire from '@/components/avatar/PersonalityQuestionnaire';
 import type { QuestionnaireAnswer } from '@/lib/questionnaire';
 
@@ -66,15 +65,6 @@ export default function CreatePage() {
     setLoading(true);
 
     try {
-      const supabase = createSupabaseBrowserClient();
-      const { data: { user } } = await supabase.auth.getUser();
-      const userId = user?.id;
-
-      if (!userId) {
-        router.push('/auth/login');
-        return;
-      }
-
       const res = await fetch('/api/create', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -83,7 +73,6 @@ export default function CreatePage() {
           relationship,
           keywords,
           description,
-          userId,
         }),
       });
 

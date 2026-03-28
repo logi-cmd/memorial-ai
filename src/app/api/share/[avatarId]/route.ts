@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { getAvatarById } from '@/lib/db';
 
 // GET /api/share/[avatarId] — 获取公开的头像信息（无需认证）
 export async function GET(
@@ -12,14 +12,9 @@ export async function GET(
     return NextResponse.json({ error: 'Missing avatarId' }, { status: 400 });
   }
 
-  // 只查询公开安全字段
-  const { data: avatar, error } = await supabase
-    .from('avatars')
-    .select('id, name, relationship, photo_url, created_at')
-    .eq('id', avatarId)
-    .single();
+  const avatar = getAvatarById(avatarId) as any;
 
-  if (error || !avatar) {
+  if (!avatar) {
     return NextResponse.json(
       { error: 'Avatar not found', message: '未找到该数字分身' },
       { status: 404 }

@@ -37,7 +37,10 @@
       "styleDesc": "Import chat history, AI learns their expression habits",
       "emotion": "Emotion Awareness",
       "emotionDesc": "Recognizes emotions, responds like a real person"
-    }
+    },
+    "privacyTitle": "Privacy & Security",
+    "privacyDesc": "All data is encrypted and stored securely. This is not 'resurrection' — it's a warm space to carry memories. AI will always be transparent about being a memory-based projection, and will gently suggest reaching out to people around you if conversations involve extreme emotions.",
+    "footerNote": "AI-generated content, for memorial and family connection purposes"
   },
   "create": {
     "steps": {
@@ -197,29 +200,73 @@
     "deleteTooltip": "Delete this memory"
   },
   "questionnaire": {
-    "submit": "Done, Continue"
+    "title": "Get to Know Them Better",
+    "subtitle": "More details = more authentic avatar",
+    "categories": {
+      "personality": "Personality",
+      "life_events": "Life Events",
+      "relationships": "Relationships",
+      "habits": "Habits",
+      "values": "Values"
+    },
+    "questions": {
+      "p1": "What is their biggest personality trait?",
+      "p2": "What catchphrases or expressions do they use?",
+      "l1": "What is the most important experience in their life?",
+      "l2": "What are they most proud of?",
+      "r1": "What is the most precious memory between you two?",
+      "r2": "How do they interact with others?",
+      "h1": "What special habits or hobbies do they have?",
+      "h2": "What do they like to eat?",
+      "v1": "What do they value most?",
+      "v2": "How do they usually handle difficulties?"
+    },
+    "placeholders": {
+      "p1": "e.g., Always thinks of others, tough on the outside but soft inside",
+      "p2": "e.g., Oh no, well, whatever you say",
+      "l1": "e.g., Went to a big city alone when young to make a living",
+      "l2": "e.g., Helped all three children graduate from university",
+      "r1": "e.g., Walking home together after school every day when we were kids",
+      "r2": "e.g., Polite but maintains distance with strangers",
+      "h1": "e.g., Goes for a walk in the park at 6 AM every morning",
+      "h2": "e.g., Braised pork with rock sugar",
+      "v1": "e.g., Family harmony, honesty",
+      "v2": "e.g., Bears it silently without telling the family"
+    },
+    "skip": "Skip",
+    "submit": "Finish"
+  },
+  "settings": {
+    "title": "Settings",
+    "mode": "Mode",
+    "localMode": "Local",
+    "cloudMode": "Cloud",
+    "modeHint": "Local mode uses Ollama, local embeddings, and Edge-TTS. Cloud mode uses API keys.",
+    "llmTitle": "Language Model",
+    "ollamaModel": "Ollama Model",
+    "ollamaUrl": "Ollama URL",
+    "embeddingTitle": "Vector Embedding",
+    "ttsTitle": "Text-to-Speech",
+    "save": "Save Settings",
+    "backToDashboard": "Back to Dashboard"
   },
   "share": {
     "shareAvatar": "Share",
-    "copyLink": "复制链接",
-    "linkCopied": "已复制!",
-    "shareToWechat": "分享到微信",
-    "pageTitle": "数字分身",
-    "pageSubtitle": "承载着珍贵的记忆",
-    "createYours": "创建你的数字分身",
-    "notFound": "未找到该数字分身",
-    "backToHome": "返回首页"
+    "copyLink": "Copy Link",
+    "linkCopied": "Copied!",
+    "shareToWechat": "Share to WeChat",
+    "pageTitle": "Digital Avatar",
+    "pageSubtitle": "Preserving precious memories",
+    "createYours": "Create Your Digital Avatar",
+    "notFound": "Avatar not found",
+    "backToHome": "Back to Home"
   },
-  "pricing": {
-    "title": "Choose Your Plan",
-    "subtitle": "Every warm connection deserves to be cherished. Pick the plan that fits you best.",
-    "monthly": "Monthly",
-    "yearly": "Yearly",
-    "yearlySave": "Save {percent}%",
-    "currentPlan": "Current Plan",
-    "backHome": "Back to Home"
+  "evolution": {
+    "noHistory": "No evolution history yet",
+    "fieldsUpdated": "{count} field(s) updated"
+  },
+  "proactive": {
+    "title": "Proactive Messages ({count})",
+    "view": "View"
   }
-}
-  }
-}
 }

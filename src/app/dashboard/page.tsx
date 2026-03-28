@@ -2,10 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { Plus, Heart } from 'lucide-react';
+import { Plus, Heart, Settings } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { createSupabaseBrowserClient } from '@/lib/supabase-browser';
 import AvatarCard from '@/components/avatar/AvatarCard';
 import ConfirmDialog from '@/components/ui/ConfirmDialog';
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
@@ -23,9 +21,7 @@ interface Avatar {
 }
 
 export default function DashboardPage() {
-  const router = useRouter();
   const t = useTranslations('dashboard');
-  const ta = useTranslations('auth');
   const tc = useTranslations('common');
   const [avatars, setAvatars] = useState<Avatar[]>([]);
   const [loading, setLoading] = useState(true);
@@ -44,29 +40,14 @@ export default function DashboardPage() {
   };
 
   useEffect(() => {
-    // 验证登录状态
-    const supabase = createSupabaseBrowserClient();
-    supabase.auth.getUser().then(({ data }) => {
-      if (!data.user) {
-        router.push('/auth/login');
-        return;
-      }
-      fetchAvatars();
-    });
-  }, [router]);
+    fetchAvatars();
+  }, []);
 
   const handleDelete = async () => {
     if (!deleteTarget) return;
     await fetch(`/api/avatars?avatarId=${deleteTarget}`, { method: 'DELETE' });
     setDeleteTarget(null);
     setAvatars((prev) => prev.filter((a) => a.id !== deleteTarget));
-  };
-
-  const handleLogout = async () => {
-    const supabase = createSupabaseBrowserClient();
-    await supabase.auth.signOut();
-    router.push('/');
-    router.refresh();
   };
 
   return (
@@ -80,17 +61,18 @@ export default function DashboardPage() {
         <div className="flex items-center gap-3">
           <LanguageSwitcher />
           <Link
+            href="/settings"
+            className="p-2 text-stone-400 hover:text-violet-600 transition-colors"
+            title={tc('settings') || '设置'}
+          >
+            <Settings className="w-5 h-5" />
+          </Link>
+          <Link
             href="/create"
             className="px-4 py-2 bg-violet-500 text-white rounded-full text-sm hover:bg-violet-600 transition-colors"
           >
             {t('createNew')}
           </Link>
-          <button
-            onClick={handleLogout}
-            className="px-3 py-2 text-sm text-stone-400 hover:text-stone-600 transition-colors"
-          >
-            {ta('logout')}
-          </button>
         </div>
       </nav>
 

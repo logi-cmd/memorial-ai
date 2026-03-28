@@ -1,16 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { textToSpeech } from '@/lib/voice';
+import { getAppConfig } from '@/lib/providers/config';
+import { getTTSProvider } from '@/lib/providers';
 
-// POST /api/voice - 使用克隆声音进行 TTS
 export async function POST(request: NextRequest) {
   try {
-    const { text, voiceId, stability = 0.6 } = await request.json();
+    const { text, voiceId, lang = 'zh' } = await request.json();
 
-    if (!text || !voiceId) {
+    if (!text) {
       return NextResponse.json({ error: '缺少必要参数' }, { status: 400 });
     }
 
-    const audioBuffer = await textToSpeech(text, voiceId, 'eleven_multilingual_v2');
+    const config = getAppConfig();
+    const ttsMod = getTTSProvider(config);
+    const audioBuffer = await ttsMod.edgeTtsSynthesize(text, lang, voiceId);
 
     return new Response(audioBuffer, {
       headers: {

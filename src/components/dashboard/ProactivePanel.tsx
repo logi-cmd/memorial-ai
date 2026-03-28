@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Bell } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import ProactiveMessageCard from '@/components/avatar/ProactiveMessageCard';
 
 interface ProactiveMessage {
@@ -13,6 +14,7 @@ interface ProactiveMessage {
 }
 
 export default function ProactivePanel() {
+  const t = useTranslations('proactive');
   const [messages, setMessages] = useState<ProactiveMessage[]>([]);
 
   useEffect(() => {
@@ -41,7 +43,7 @@ export default function ProactivePanel() {
     <div className="space-y-3 mb-6">
       <div className="flex items-center gap-2 text-sm font-medium text-stone-600">
         <Bell className="w-4 h-4 text-violet-500" />
-        Proactive Messages ({messages.length})
+        {t('title', { count: messages.length })}
       </div>
       {messages.map((m) => (
         <ProactiveMessageCard

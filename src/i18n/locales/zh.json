@@ -37,7 +37,10 @@
       "styleDesc": "导入聊天记录，学会 TA 的表达习惯",
       "emotion": "情感感知",
       "emotionDesc": "识别情绪，像真人一样回应"
-    }
+    },
+    "privacyTitle": "隐私与安全",
+    "privacyDesc": "所有数据加密安全存储。这不是\"复活\"——而是一个承载记忆的温暖空间。AI 始终会坦诚自己是基于记忆的投影，如果对话涉及极端情绪，会温柔地建议你关心身边的人。",
+    "footerNote": "AI 生成内容，仅用于纪念与家庭连接"
   },
   "create": {
     "steps": {
@@ -235,6 +238,20 @@
     "skip": "跳过",
     "submit": "完成并继续"
   },
+  "settings": {
+    "title": "设置",
+    "mode": "运行模式",
+    "localMode": "本地模式",
+    "cloudMode": "云端模式",
+    "modeHint": "本地模式使用 Ollama、本地嵌入和 Edge-TTS。云端模式使用 API key。",
+    "llmTitle": "语言模型",
+    "ollamaModel": "Ollama 模型",
+    "ollamaUrl": "Ollama 地址",
+    "embeddingTitle": "向量嵌入",
+    "ttsTitle": "语音合成",
+    "save": "保存设置",
+    "backToDashboard": "返回仪表盘"
+  },
   "share": {
     "shareAvatar": "分享",
     "copyLink": "复制链接",
@@ -245,5 +262,13 @@
     "createYours": "创建你的数字分身",
     "notFound": "未找到该数字分身",
     "backToHome": "返回首页"
+  },
+  "evolution": {
+    "noHistory": "暂无进化历史",
+    "fieldsUpdated": "更新了 {count} 个字段"
+  },
+  "proactive": {
+    "title": "主动消息 ({count})",
+    "view": "查看"
   }
 }

@@ -5,7 +5,6 @@ import { useParams } from 'next/navigation';
 import { Send, Mic, MicOff, Volume2, VolumeX, Settings, Sparkles, Home } from 'lucide-react';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import { createSupabaseBrowserClient } from '@/lib/supabase-browser';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -30,14 +29,6 @@ export default function ChatPage() {
   const [pendingMemories, setPendingMemories] = useState<
     { id: string; content: string }[]
   >([]);
-  const [userId, setUserId] = useState<string | null>(null);
-
-  useEffect(() => {
-    const supabase = createSupabaseBrowserClient();
-    supabase.auth.getUser().then(({ data }) => {
-      if (data.user) setUserId(data.user.id);
-    });
-  }, []);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -82,7 +73,6 @@ export default function ChatPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           avatarId,
-          userId,
           message: text,
         }),
       });

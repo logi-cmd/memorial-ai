@@ -1,6 +1,7 @@
 'use client';
 
 import { X, Bell, Heart, MessageCircle, Calendar } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 interface ProactiveMessageCardProps {
   id: string;
@@ -22,6 +23,8 @@ export default function ProactiveMessageCard({
   onDismiss,
   onView,
 }: ProactiveMessageCardProps) {
+  const t = useTranslations('proactive');
+
   const typeIcons: Record<string, React.ReactNode> = {
     birthday: <Calendar className="w-4 h-4 text-amber-500" />,
     anniversary: <Heart className="w-4 h-4 text-pink-500" />,
@@ -42,7 +45,7 @@ export default function ProactiveMessageCard({
             onClick={() => onView(avatarId)}
             className="text-xs px-2 py-1 bg-violet-500 text-white rounded-md hover:bg-violet-600"
           >
-            View
+            {t('view')}
           </button>
           <button
             onClick={() => onDismiss(id)}

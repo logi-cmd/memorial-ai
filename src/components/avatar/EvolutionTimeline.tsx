@@ -1,5 +1,7 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
+
 interface EvolutionEvent {
   id: string;
   avatar_id: string;
@@ -13,8 +15,10 @@ interface EvolutionTimelineProps {
 }
 
 export default function EvolutionTimeline({ events }: EvolutionTimelineProps) {
+  const t = useTranslations('evolution');
+
   if (events.length === 0) {
-    return <p className="text-sm text-stone-400">No evolution history</p>;
+    return <p className="text-sm text-stone-400">{t('noHistory')}</p>;
   }
 
   return (
@@ -24,7 +28,7 @@ export default function EvolutionTimeline({ events }: EvolutionTimelineProps) {
           <div className="w-2 h-2 bg-violet-400 rounded-full mt-1.5 shrink-0" />
           <div>
             <p className="text-sm text-stone-700">
-              {event.patches.length} field(s) updated
+              {t('fieldsUpdated', { count: event.patches.length })}
             </p>
             <div className="flex items-center gap-2 mt-1">
               <span className="text-xs text-stone-400">

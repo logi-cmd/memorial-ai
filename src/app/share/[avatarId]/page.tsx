@@ -19,6 +19,7 @@ export default function SharePage() {
   const avatarId = params.avatarId as string;
   const t = useTranslations('share');
   const tc = useTranslations('common');
+  const td = useTranslations('dashboard');
 
   const [avatar, setAvatar] = useState<SharedAvatar | null>(null);
   const [loading, setLoading] = useState(true);
@@ -74,18 +75,12 @@ export default function SharePage() {
     );
   }
 
-  const relationshipLabels: Record<string, string> = {
-    father: '父亲',
-    mother: '母亲',
-    grandfather: '爷爷',
-    grandmother: '奶奶',
-    maternalGrandfather: '外公',
-    maternalGrandmother: '外婆',
-    spouse: '配偶',
-    sibling: '兄弟姐妹',
-    child: '子女',
-    friend: '朋友',
-    other: '其他',
+  const getRelationshipLabel = (relationship: string) => {
+    try {
+      return td(`relationships.${relationship}`);
+    } catch {
+      return relationship;
+    }
   };
 
   return (
@@ -120,7 +115,7 @@ export default function SharePage() {
                 {avatar.name}
               </h1>
               <p className="text-stone-500 dark:text-stone-400 mb-4">
-                {relationshipLabels[avatar.relationship] || avatar.relationship}
+                {getRelationshipLabel(avatar.relationship)}
               </p>
 
               <div className="bg-violet-50 dark:bg-violet-900/20 rounded-2xl p-4 mb-6">

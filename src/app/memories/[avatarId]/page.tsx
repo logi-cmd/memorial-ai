@@ -1,36 +1,28 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import { ArrowLeft, Brain } from 'lucide-react';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import { createSupabaseBrowserClient } from '@/lib/supabase-browser';
 import MemoryTimeline from '@/components/memory/MemoryTimeline';
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
 
 export default function MemoriesPage() {
   const params = useParams();
-  const router = useRouter();
   const avatarId = params.avatarId as string;
   const t = useTranslations('timeline');
 
   const [avatarName, setAvatarName] = useState('');
 
   useEffect(() => {
-    const supabase = createSupabaseBrowserClient();
-
-    supabase.auth.getUser().then(({ data }) => {
-      if (!data.user) router.push('/auth/login');
-    });
-
     fetch(`/api/create?avatarId=${avatarId}`)
       .then((r) => r.json())
       .then((data) => {
         if (data.avatar) setAvatarName(data.avatar.name);
       })
       .catch(() => {});
-  }, [avatarId, router]);
+  }, [avatarId]);
 
   const handleMemoryConfirm = (_memoryId: string) => {};
 

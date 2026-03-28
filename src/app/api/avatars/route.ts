@@ -1,51 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createSupabaseServerClient } from '@/lib/supabase-server';
+import { getAvatars, getConversations, deleteAvatar, updateAvatar } from '@/lib/db';
 
-// GET /api/avatars — 获取当前用户的所有分身（含最后对话时间）
+// GET /api/avatars — 获取所有分身（含最后对话时间）
 export async function GET() {
-  const supabase = await createSupabaseServerClient();
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  }
-
-  const { data: avatars, error } = await supabase
-    .from('avatars')
-    .select('id, name, relationship, photo_url, character_card, created_at, updated_at, evolution_version')
-    .eq('user_id', user.id)
-    .order('updated_at', { ascending: false });
-
-  if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
-  }
+  const avatars = getAvatars() as any[];
 
   // 获取每个分身的最后对话时间
-  const avatarIds = (avatars || []).map((a) => a.id);
-  let lastConversationMap: Record<string, string> = {};
-
-  if (avatarIds.length > 0) {
-    const { data: conversations } = await supabase
-      .from('conversations')
-      .select('avatar_id, updated_at')
-      .in('avatar_id', avatarIds)
-      .order('updated_at', { ascending: false });
-
-    if (conversations) {
-      // 每个 avatar 取最近的对话
-      const seen = new Set<string>();
-      for (const c of conversations) {
-        if (!seen.has(c.avatar_id)) {
-          seen.add(c.avatar_id);
-          lastConversationMap[c.avatar_id] = c.updated_at;
-        }
-      }
-    }
-  }
-
-  const result = (avatars || []).map((a) => ({
-    ...a,
-    last_conversation: lastConversationMap[a.id] || null,
-  }));
+  const result = avatars.map((a) => {
+    const convs = getConversations(a.id, 1) as any[];
+    return {
+      ...a,
+      last_conversation: convs.length > 0 ? convs[0].created_at : null,
+    };
+  });
 
   return NextResponse.json({ avatars: result });
 }
@@ -59,22 +26,7 @@ export async function DELETE(request: NextRequest) {
     return NextResponse.json({ error: '缺少 avatarId' }, { status: 400 });
   }
 
-  const supabase = await createSupabaseServerClient();
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  }
-
-  const { error } = await supabase
-    .from('avatars')
-    .delete()
-    .eq('id', avatarId)
-    .eq('user_id', user.id);
-
-  if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
-  }
-
+  deleteAvatar(avatarId);
   return NextResponse.json({ success: true });
 }
 
@@ -86,23 +38,6 @@ export async function PATCH(request: NextRequest) {
     return NextResponse.json({ error: '缺少 avatarId' }, { status: 400 });
   }
 
-  const supabase = await createSupabaseServerClient();
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  }
-
-  const { data, error } = await supabase
-    .from('avatars')
-    .update(updates)
-    .eq('id', avatarId)
-    .eq('user_id', user.id)
-    .select()
-    .single();
-
-  if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
-  }
-
-  return NextResponse.json({ avatar: data });
+  const avatar = updateAvatar(avatarId, updates);
+  return NextResponse.json({ avatar });
 }
